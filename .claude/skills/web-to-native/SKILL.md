@@ -1,6 +1,6 @@
 ---
 name: web-to-native
-description: Criterio de adaptación web a React Native para One Impact - mapa Next.js/Expo, patrones por sección (hero, carruseles, testimonios, toggle, stats, footer), reglas duras de UX móvil y convenciones de código. Cargar antes de escribir cualquier componente o pantalla en Fase 2.
+description: Criterio de adaptación web a React Native para One Impact - mapa Next.js/Expo, patrones por sección (hero, carruseles, testimonios, toggle, stats, footer), reglas duras de UX móvil y convenciones de código, con recetas por componente verificadas contra los docs vigentes de React Native (references/recetas-rn.md). Cargar antes de escribir cualquier componente o pantalla en Fase 2.
 ---
 
 # Web → React Native: el criterio que se evalúa
@@ -14,22 +14,23 @@ en web al patrón nativo correcto.
 | Web | Native | Trampa a evitar |
 |---|---|---|
 | `<div>`/`<section>` | `<View>` | — |
-| `<h1>`, `<p>`, `<span>` | `<Text>` | Texto suelto en `<View>` **crashea** |
-| CSS/Tailwind | `StyleSheet.create` | No hay cascada; solo `Text` hereda de `Text` |
-| `px`/`rem`/`vh` | números dp | Nada de viewport units: `useWindowDimensions()` o flex |
-| flex opcional | flex siempre, default **column** | En web el default es row |
+| `<h1>`, `<p>`, `<span>` | `<Text>` | Texto suelto en `<View>` **lanza excepción** |
+| CSS/Tailwind | `StyleSheet.create` | No hay cascada; solo `Text` anidado hereda de `Text` |
+| `px`/`rem`/`vh` | números dp; `width`/`height` aceptan `%` string | Sin vh/vw/rem: `useWindowDimensions()` o flex |
+| flex opcional | flex siempre, default **column** | También divergen: `flexShrink: 0` y `alignContent: flex-start` |
 | `<img>` | `<Image>` de expo-image | Dimensiones explícitas o flex; `contentFit` |
 | `<video>` | expo-video (`useVideoPlayer` + `<VideoView>`) | Autoplay con sonido bloqueado por el SO: arrancar `muted` |
 | SVG | react-native-svg + transformer | Un `.svg` no es `<Image>`; los logos lo necesitan |
 | `:hover` | `<Pressable>` estado `pressed` | Feedback visible (opacity/scale) obligatorio |
-| scroll de página | `<ScrollView>` explícito | Nada scrollea solo |
+| scroll de página | `<ScrollView>` explícito | Nada scrollea solo; necesita alto acotado (`flex: 1`) |
 | grid / lib carrusel | `<FlatList horizontal snapToInterval decelerationRate="fast">` | No `.map` dentro de ScrollView para colecciones |
 | `position: fixed` | tabs nativos abajo; footer al final del scroll | Lo fijo no se calca, se adapta |
 | `next/font` | expo-font en `_layout` raíz | Splash hasta que cargue |
-| `box-shadow` | iOS `shadow*` + Android `elevation` | Definir ambos en el token |
+| `box-shadow` | token único: `boxShadow` cross-platform (new arch) o `shadow*` iOS + `elevation` Android | La vía se elige en el bloque theme; no por componente |
 | `<a>` | `<Link>` de expo-router / `router.push()` | Params con `useLocalSearchParams()` |
 
-Siempre: `react-native-safe-area-context` (notch/home indicator).
+Siempre: `react-native-safe-area-context` (el `SafeAreaView` del core está
+**deprecado** en los docs oficiales).
 
 ## Patrones por sección (validar contra el screenshot 390 de Fase 1)
 
@@ -50,14 +51,27 @@ Siempre: `react-native-safe-area-context` (notch/home indicator).
 
 ## Reglas duras (no negociables)
 
-- Touch targets ≥ 44×44 pt, con separación entre tocables.
-- `accessibilityRole` + `accessibilityLabel` en todo interactivo; `alt`
-  (prop `alt`/label) en imágenes informativas.
+- Touch targets ≥ 44×44 pt (HIG; Material pide 48dp) con separación entre
+  tocables — `hitSlop` cuenta para alcanzarlo sin agrandar el layout.
+- `accessibilityRole` + `accessibilityLabel` en todo interactivo; el elemento
+  activo (avatar, opción del toggle) además `accessibilityState={{selected}}`.
 - Contraste AA sobre fotografía → overlay obligatorio.
 - `FlatList` para colecciones; `expo-image` con `cachePolicy`.
 - Safe areas respetadas; `StatusBar` clara/oscura según el fondo del hero.
-- El layout aguanta font scale del sistema aumentado (no alturas fijas que
-  corten texto).
+  Android moderno es edge-to-edge: `translucent`/`backgroundColor` ya no
+  existen — usar `expo-status-bar` y su prop `style`.
+- El layout aguanta font scale del sistema aumentado (`allowFontScaling` queda
+  en su default `true`; nada de alturas fijas que corten texto).
+
+## Recetas exactas por componente
+
+`references/recetas-rn.md` (mismo directorio de este skill) trae la receta
+verificada contra los docs de RN vigentes para: carrusel FlatList con snap,
+Pressable con feedback y `hitSlop`, estados accesibles de lo seleccionado,
+Text y font scale, `gap` y defaults de layout, imágenes con `require()`
+estático, sombras (boxShadow vs par clásico), StatusBar y forks por
+plataforma. **Léela al construir la sección que la necesite** — es la
+diferencia entre el prop correcto y uno inventado de memoria.
 
 ## Convenciones de código (§2.5 + §2.1)
 

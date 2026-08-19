@@ -3,16 +3,29 @@
 Goal del dev: escanear los docs de React Native (archive.reactnative.dev →
 contrastado con reactnative.dev vigente) y perfeccionar la parte RN del equipo.
 
-- [ ] Subagente escanea docs RN: verifica las afirmaciones del skill
+- [x] Subagente escanea docs RN: verifica las afirmaciones del skill
       `web-to-native` y extrae props/comportamientos exactos por componente
-- [ ] Integrar correcciones en `web-to-native/SKILL.md`
-- [ ] Añadir `references/recetas-rn.md` (recetas exactas por sección,
+- [x] Integrar correcciones en `web-to-native/SKILL.md`
+- [x] Añadir `references/recetas-rn.md` (recetas exactas por sección,
       carga bajo demanda — progressive disclosure del skill-creator)
-- [ ] Actualizar `docs/ai-workflow.md` y proponer commit
+- [x] Actualizar `docs/ai-workflow.md` y proponer commit
 
 ## Review 0.1
 
-(pendiente al cierre del bloque)
+- La URL dada (`archive.reactnative.dev`) es el sitio congelado pre-2020
+  (llega a ~0.59): se contrastó y la autoridad fue reactnative.dev vigente
+  (v0.87). 13/13 afirmaciones del skill verificadas contra docs.
+- Correcciones integradas: `boxShadow` cross-platform en new architecture
+  (nueva vía preferida de sombras, decidida en bloque theme); `SafeAreaView`
+  del core oficialmente deprecado; `translucent`/`backgroundColor` de
+  StatusBar retirados (Android edge-to-edge); `width/height` sí aceptan `%`;
+  defaults divergentes `flexShrink: 0` / `alignContent: flex-start`; los
+  44pt/48dp son de HIG/Material, no de los docs RN.
+- Nuevo: `web-to-native/references/recetas-rn.md` — recetas exactas
+  (carrusel snap completo, hitSlop, accessibilityState selected, font scale,
+  gap, require estático, StatusBar, Platform.select). Los builders lo leen
+  al construir la sección que lo necesite, no precargado: contexto barato.
+- `foundation-builder` (bloque theme) actualizado a la decisión de sombras.
 
 ---
 

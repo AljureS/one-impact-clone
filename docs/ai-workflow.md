@@ -38,3 +38,28 @@ modelos como restricción de diseño.
   secuenciales por el navegador MCP único.
 
 **Aceptado / ajustado por el dev:** (pendiente de revisión del dev)
+
+---
+
+## Bloque 0.1 — Perfeccionar la parte React Native con docs oficiales (2026-08-18)
+
+**Qué se pidió:** escanear los docs de React Native
+(`archive.reactnative.dev/docs/next/getting-started`) y perfeccionar la parte
+RN del equipo.
+
+**Qué hizo el agente:**
+- Subagente de investigación sobre los docs: detectó que la URL dada es el
+  sitio de archivo congelado en ~0.59 (pre-Pressable, pre-new-architecture) y
+  usó reactnative.dev vigente (v0.87) como autoridad, contrastando ambos.
+- Verificó las 13 afirmaciones RN del skill `web-to-native`: 13 confirmadas,
+  con 6 correcciones/matices integrados — `boxShadow` cross-platform (new
+  arch, default desde 0.76), `SafeAreaView` core deprecado, props
+  `translucent`/`backgroundColor` de StatusBar retirados (edge-to-edge),
+  porcentajes válidos en width/height, defaults `flexShrink: 0` y
+  `alignContent: flex-start`, y atribución correcta de los mínimos táctiles
+  (HIG/Material, no docs RN).
+- Añadió `web-to-native/references/recetas-rn.md` (progressive disclosure:
+  se lee al construir la sección, no se precarga) y actualizó la decisión de
+  sombras en `foundation-builder`.
+
+**Aceptado / ajustado por el dev:** (pendiente de revisión del dev)

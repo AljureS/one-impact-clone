@@ -33,8 +33,10 @@ sobre velocidad.
 - Fuente única: `docs/exploration/03-design-tokens.md` → `src/shared/theme/`
   (`colors.ts` · `typography.ts` · `spacing.ts` · `radius.ts` · `index.ts`).
 - Espaciado en escala de múltiplos de 4; tipografía como escala nombrada
-  (`display`, `title`, `body`, `caption`); sombras con `shadow*` iOS +
-  `elevation` Android en el mismo token.
+  (`display`, `title`, `body`, `caption`); sombras como token único —
+  `boxShadow` cross-platform (new architecture del SDK actual) o el par
+  `shadow*` iOS + `elevation` Android; elegir UNA vía y documentarla en el
+  reporte (detalle en `web-to-native/references/recetas-rn.md`).
 - Si el sitio usa fuente custom: instalar el paquete `@expo-google-fonts/*`
   correspondiente; si no existe, elegir fallback y **documentarlo en el
   reporte** (va al README).
