@@ -9,7 +9,7 @@ Entrega: **jueves 20 de agosto, 6:00 pm**. Se evalúa el resultado *y* el proces
 ## 1. Plan primero
 
 - **Plan mode obligatorio** para: cambio de fase, decisiones de arquitectura, y cualquier tarea nueva de 3+ pasos que no esté ya desglosada en el playbook. También **para verificar**, no solo para construir: una auditoría de cierre (§1.5, §3.1–3.3) se planea antes de ejecutarse.
-- **Unidad de trabajo = un bloque = una sección = un commit** (§2.6). Cada bloque cierra proponiendo su mensaje de commit (regla 7); eso siempre, es barato.
+- **Unidad de trabajo = un bloque = una sección = un commit** (§2.6). Cada bloque cierra **proponiendo** su mensaje de commit para que lo ejecute el dev (regla 7 y §8); eso siempre, es barato.
 - Lo que **no** se repite por sección es pedir aprobación de un plan ya aprobado: dentro de un plan confirmado, ejecuta y reporta.
 - El playbook ya es el plan de las Fases 1–3. No lo re-planees: ejecútalo y desglosa solo el bloque en curso.
 - **Si algo se tuerce, para y re-planea.** No insistas contra un error tres veces; vuelve a plan mode con lo que aprendiste.
@@ -72,9 +72,11 @@ Antes de dar por bueno un cambio no trivial, pregunta si hay una forma más simp
 
 ## 8. Git
 
-- Conventional Commits con scope de feature (`feat(zones): add progress timeline carousel`), en inglés, toda la historia en un solo idioma.
-- Rama por feature (`feat/home-hero`), commits atómicos, merge frecuente a `main`. La historia se califica: nada de un commit gigante al final.
-- **Propón el mensaje de commit al cerrar cada bloque; no commitees por tu cuenta.**
+- **Los commits los hace el dev, no el agente.** Nunca ejecutes `git add`, `git commit`, `git push`, `git merge`, ni crees o cambies de rama. Tampoco `git restore`/`checkout` sobre archivos con cambios: destruye trabajo del dev.
+- Al cerrar cada bloque, **propón el mensaje de commit** (texto listo para copiar) y espera. Ahí termina tu trabajo con git.
+- Comandos de solo lectura (`git status`, `git diff`, `git log`) son libres: úsalos para verificar antes de proponer.
+- Formato del mensaje que propones: Conventional Commits con scope de feature (`feat(zones): add progress timeline carousel`), en inglés, toda la historia en un solo idioma.
+- Contexto para que tus propuestas encajen: rama por feature (`feat/home-hero`), commits atómicos, merge frecuente a `main`. La historia se califica: nada de un commit gigante al final.
 
 ## 9. Principios
 
