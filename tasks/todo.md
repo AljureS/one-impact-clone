@@ -1,4 +1,41 @@
-# Fase 1 — Exploración del sitio (en curso)
+# Fase 2 — Construcción (en curso)
+
+Plan aprobado (plan mode, 2026-08-19). /loop de precisión activo: cada bloque
+se verifica con verify-block (tsc/eslint · diff contenido · visual 390) antes
+de continuar. Commits: el mensaje se propone en el reporte de cada bloque y
+nada más — el dev decide cuándo y cómo (ver tasks/lessons.md 2026-08-19).
+Decisiones de adaptación 1–11 en el plan (van al README).
+
+- [x] B1 scaffold (foundation-builder): SDK 57 / RN 0.86.2 / TS 6.0.3, rutas
+      en app/ raíz, 8 deps de ejemplo podadas, web OK, assets 27+iconos.
+      Gates verificados también por el orquestador: tsc/eslint/doctor verdes.
+      1 reanudación por corte de red.
+- [x] B2 theme: 5 archivos (266 líneas tot), Geist 5 pesos reales
+      (@expo-google-fonts/geist, sin fallback), 6 conflictos respetados por
+      pantalla, sombras SIN token (03 no capturó valores — no inventó).
+      Gates re-verificados ✓ · commit propuesto: feat(theme): design tokens
+      from site exploration
+- [x] B3 data: 8 archivos (418 líneas), 5 zonas (titleHome/titleZones para
+      ambas grafías, description solo en las 3 reales) · 5 avances con
+      zoneSlug del mapeo aprobado · 3 planes + 6 beneficios + toggle
+      verbatim · 3 testimonios · navigation.ts canónico. Cruce de fidelidad
+      del builder + spot-check del orquestador ✓. Gates ✓. Pendiente
+      autorizado: home.ts (hero/que-es) se añade al abrir B4 · commit
+      propuesto: feat(data): typed content models and site content
+- [ ] B4 navigation+shared (ídem): tabs+stack, stubs, Button/SectionTitle/
+      Screen/Footer — congela theme/ y data/
+- [ ] B5 home (feature-builder): hero → que-es → zonas → testimonios →
+      aliados → stats-cta (sección=commit)
+- [ ] B6 zones (feature-builder): ZonesScreen → ZoneDetailScreen derivada ×5
+- [ ] B7 subscription (feature-builder): collage-hero → planes+toggle → beneficios
+- [ ] B8 about (feature-builder): pantalla derivada
+- [ ] B9 README (orquestador) — GIF lo graba el dev
+- [ ] Cierre: gates de fase (tsc/eslint/expo-doctor/knip/wc) + review aquí +
+      ai-workflow.md
+
+---
+
+# Fase 1 — Exploración del sitio (CERRADA 2026-08-19)
 
 Plan aprobado (plan mode). Ejecución con /loop de calidad: verificar los
 artefactos de cada subagente contra el estándar del playbook antes de lanzar
@@ -23,11 +60,11 @@ el siguiente. Exploradores SIEMPRE de a uno (navegador MCP compartido).
       Toggle: matriz de 6 hrefs verificada; un solo CTA «Comenzar mi
       travesía» → /registro?plan=&billing=; sin aria-pressed (nota a11y);
       página mobile-first sin duplicación DOM; primer uso real de dark-green.
-- [ ] Pantallas bloqueadas (403 origin): zona-[slug] ×5 y nosotros —
-      PENDIENTE DEV: captura manual o material de referencia; sin eso quedan
-      como huecos documentados del gate §1.5
-- [ ] /registro: fuera del alcance del playbook (5 pantallas); documentado en
-      sitemap — el dev decide si se explora aparte
+- [x] Pantallas bloqueadas (403 origin): zona-[slug] ×5 y nosotros —
+      RESUELTO por decisión del dev (ver ítem DECISIÓN DEV abajo): no habrá
+      captura manual; se diseñan derivadas en Fase 2 (B6/B8)
+- [x] /registro: RESUELTO por decisión del dev — fuera de alcance; queda solo
+      el link documentado (01-sitemap, 05-interactions, 00-gaps)
 - [x] `public/` en el repo — el dev lo añadió durante la sesión (27 archivos
       + 2 .DS_Store trackeados); consolidator hizo verificación física
       completa con sips/mdls: dimensiones 1:1 con lo observado
