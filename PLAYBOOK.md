@@ -124,7 +124,7 @@ El zip original trae basura de macOS: eliminar `__MACOSX/` y `.DS_Store` antes d
 
 # CHECKPOINT — antes de iniciar Fase 2
 
-1. **Mover todos los `.md` a `docs/`, excepto `CLAUDE.md`** (queda en la raíz). Este archivo pasa a ser `docs/PLAYBOOK.md`.
+1. **Mover todos los `.md` a `docs/`, excepto `CLAUDE.md` y los de `tasks/`** (quedan en la raíz; `tasks/` es estado de trabajo, no documentación de entrega). Este archivo pasa a ser `docs/PLAYBOOK.md`: actualizar la referencia a esa ruta en `CLAUDE.md`.
 2. Checklist §1.5 completo.
 3. Commit: `docs: close exploration phase, move docs into /docs`
 
