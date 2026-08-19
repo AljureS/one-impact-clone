@@ -1,0 +1,35 @@
+{
+  "pantalla": "suscripcion",
+  "ruta": "/suscripcion",
+  "fuente": "browser_evaluate, 1440x900, 2026-08-19",
+  "notaCruce": "public/ AÚN NO está en el repo: el cruce es contra el árbol de referencia §1.4 de PLAYBOOK.md (línea 'subscription/ hero-main · hero-secondary · collage-1/2/3 (.jpg)'). Todo match queda 'pendiente verificación física'.",
+  "imgs": [
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/logo_blanco.svg", "alt": "One Impact", "naturalW": 300, "naturalH": 117, "uso": "logo en nav (120x47) y footer (120x47) — canónico de home, aparece 2 veces", "local": "public/images/logo_blanco.svg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/subscription/collage-1.jpg", "alt": "(vacío)", "naturalW": 1376, "naturalH": 864, "uso": "collage-hero fila 1, celda 1 de grid grid-cols-3, wrapper relative aspect-square, img fill object-cover", "local": "public/images/subscription/collage-1.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/subscription/collage-2.jpg", "alt": "(vacío)", "naturalW": 2048, "naturalH": 2048, "uso": "collage-hero fila 1, celda 2 (aspect-square)", "local": "public/images/subscription/collage-2.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/subscription/collage-3.jpg", "alt": "(vacío)", "naturalW": 1024, "naturalH": 1024, "uso": "collage-hero fila 1, celda 3 (aspect-square)", "local": "public/images/subscription/collage-3.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/subscription/hero-main.jpg", "alt": "(vacío)", "naturalW": 1456, "naturalH": 816, "uso": "collage-hero fila 2 (flex), wrapper relative flex-[3], img fill object-cover object-top (dos niños mirando arriba)", "local": "public/images/subscription/hero-main.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/subscription/hero-secondary.jpg", "alt": "(vacío)", "naturalW": 1344, "naturalH": 896, "uso": "collage-hero fila 2, wrapper relative flex-[2], img fill object-cover (mujer con perro frente a fiordo)", "local": "public/images/subscription/hero-secondary.jpg", "cruce": "match §1.4 — pendiente verificación física" }
+  ],
+  "videos": [],
+  "bgs": [],
+  "svgsInline": {
+    "nota": "NO son archivos de public/: SVG inline en el JSX. Copiados completos aquí para reproducirlos en Fase 2.",
+    "checkPlanActivo": "<span class=\"absolute top-2 right-2 w-5 h-5 bg-dark-green rounded-full flex items-center justify-center\"><svg viewBox=\"0 0 12 12\" class=\"w-3 h-3 text-white\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 6 L5 9 L10 3\"></path></svg></span>",
+    "iconosBeneficios": {
+      "comun": "svg class='w-full h-full' viewBox='0 0 40 40' dentro de div w-10 h-10 shrink-0; primer hijo siempre <rect width='40' height='40' rx='8' fill='#243b1a'/> (fondo dark-green); trazos blancos stroke-width 1.5",
+      "1-tu-ipass": "<rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#243b1a\"></rect><rect x=\"8\" y=\"12\" width=\"24\" height=\"18\" rx=\"3\" stroke=\"white\" stroke-width=\"1.5\" fill=\"none\"></rect><circle cx=\"15\" cy=\"20\" r=\"3\" fill=\"white\"></circle><line x1=\"22\" y1=\"18\" x2=\"29\" y2=\"18\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"22\" y1=\"22\" x2=\"27\" y2=\"22\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line>",
+      "2-proyectos-coordenadas": "<rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#243b1a\"></rect><path d=\"M20 10 C16 10 13 13 13 17 C13 22.5 20 31 20 31 C20 31 27 22.5 27 17 C27 13 24 10 20 10Z\" stroke=\"white\" stroke-width=\"1.5\" fill=\"none\"></path><circle cx=\"20\" cy=\"17\" r=\"2.5\" fill=\"white\"></circle>",
+      "3-linea-travesia": "<rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#243b1a\"></rect><path d=\"M9 28 C13 28 13 20 20 20 S27 12 31 12\" stroke=\"white\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"></path><circle cx=\"9\" cy=\"28\" r=\"2.5\" fill=\"white\"></circle><circle cx=\"20\" cy=\"20\" r=\"2.5\" fill=\"white\"></circle><circle cx=\"31\" cy=\"12\" r=\"2.5\" fill=\"white\"></circle>",
+      "4-academy-comunidad": "<rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#243b1a\"></rect><polygon points=\"20,10 32,16 20,22 8,16\" fill=\"white\"></polygon><path d=\"M14 19 L14 27 C16.5 29 23.5 29 26 27 L26 19\" stroke=\"white\" stroke-width=\"1.5\" fill=\"none\" stroke-linejoin=\"round\"></path><line x1=\"32\" y1=\"16\" x2=\"32\" y2=\"24\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line>",
+      "5-wallet-marketplace": "<rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#243b1a\"></rect><rect x=\"8\" y=\"14\" width=\"24\" height=\"16\" rx=\"3\" stroke=\"white\" stroke-width=\"1.5\" fill=\"none\"></rect><path d=\"M8 20 L32 20\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><rect x=\"24\" y=\"22\" width=\"6\" height=\"5\" rx=\"2\" fill=\"white\"></rect><path d=\"M12 14 L15 10\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><path d=\"M19 14 L22 10\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path>",
+      "6-fondo-emergencias": "<rect width=\"40\" height=\"40\" rx=\"8\" fill=\"#243b1a\"></rect><path d=\"M20 10 L29 14 L29 22 C29 27.5 20 32 20 32 C20 32 11 27.5 11 22 L11 14 Z\" stroke=\"white\" stroke-width=\"1.5\" fill=\"none\" stroke-linejoin=\"round\"></path><line x1=\"20\" y1=\"17\" x2=\"20\" y2=\"24\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"16.5\" y1=\"20.5\" x2=\"23.5\" y2=\"20.5\" stroke=\"white\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line>"
+    }
+  },
+  "notas": [
+    "Los 5 assets subscription/* de §1.4 se usan todos en esta pantalla y ninguno sobra — cruce 1:1 completo",
+    "Las 5 imágenes del collage tienen alt=\"\" (decorativas): por eso no aparecen en el árbol de accesibilidad",
+    "No hay video ni background-image CSS (videos: [], bgs: [])",
+    "El check del plan activo y los 6 iconos de beneficios son SVG inline (copiados arriba), no archivos"
+  ]
+}

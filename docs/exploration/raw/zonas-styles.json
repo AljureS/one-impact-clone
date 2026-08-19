@@ -1,0 +1,113 @@
+{
+  "pantalla": "zonas",
+  "ruta": "/zonas",
+  "viewport": "1440x900",
+  "fuente": "browser_evaluate sobre el sitio real, 2026-08-19",
+  "alcance": "SOLO desviaciones y novedades respecto a raw/home-styles.json; lo no listado aquí es idéntico a home (fontFamily Geist única, cssVarsTheme, header, menú móvil, footer)",
+  "coloresNuevos": {
+    "#F0ECE4": "rgb(240,236,228) — fondo de hero y de zonas-grid (bg-[#f0ece4]); NO existe en home",
+    "#5A7045": "stroke de los 10 paths del patrón topográfico SVG del hero (atributo SVG, no aparece en paleta CSS computada); NO existe en home",
+    "#0F1A0A": "forest — aquí como FONDO SÓLIDO de sección (class bg-forest en avances); en home solo existía como overlay bg-forest/80",
+    "#000000": "text-black en el chip «Ver más» de tarjetas de zona (home usaba text-gray-900 en su chip)"
+  },
+  "alphasNuevosEnUso": {
+    "white/90": "text-white/90 — párrafo descripción de tarjeta de zona (home llegaba hasta white/80)",
+    "white/50": "text-white/50 — fecha «• 2026» de tarjetas de avances",
+    "white/30": "bg-white/30 — dots inactivos del carrusel móvil de avances",
+    "black/30": "via-black/30 del gradiente de tarjeta de zona (home usaba via-transparent en sus tarjetas)"
+  },
+  "paletteScriptRaw": [
+    "rgb(0, 0, 0)", "rgb(23, 23, 23)", "rgb(255, 255, 255)",
+    "oklab white/0.8", "lab gray-900", "rgb(200, 212, 0)", "oklab black/0.1",
+    "rgb(240, 236, 228)", "lab gray-600", "oklab white/0.9", "rgb(15, 26, 10)",
+    "oklab white/0.7", "oklab white/0.5", "oklab white/0.3", "rgb(45, 58, 66)",
+    "oklab white/0.6", "oklab white/0.4", "oklab white/0.1"
+  ],
+  "typographyScriptRaw": [
+    "A | Geist | 16px | 400 | 24px",
+    "A | Geist | 14px | 500 | 20px",
+    "A | Geist | 14px | 700 | 20px",
+    "BUTTON | Geist | 16px | 400 | 24px",
+    "SPAN | Geist | 24px | 700 | 30px",
+    "A | Geist | 16px | 700 | 24px",
+    "H1 | Geist | 60px | 700 | 75px",
+    "P | Geist | 18px | 400 | 29.25px",
+    "H2 | Geist | 36px | 700 | 45px",
+    "P | Geist | 14px | 400 | 19.25px",
+    "SPAN | Geist | 14px | 600 | 20px",
+    "P | Geist | 16px | 400 | 26px",
+    "H3 | Geist | 14px | 700 | 19.25px",
+    "P | Geist | 12px | 400 | 16px",
+    "P | Geist | 12px | 400 | 19.5px",
+    "P | Geist | 12px | 700 | 16px",
+    "LI | Geist | 16px | 400 | 24px",
+    "A | Geist | 14px | 400 | 20px"
+  ],
+  "typographyDesviaciones1440": {
+    "h1-hero": "60px / 700 / lh 75px / gray-900, text-align center — DESVÍA de home: weight 700 (font-bold), no 900; color oscuro, no blanco. Clases: text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight",
+    "p-hero": "18px / 400 / lh 29.25px / gray-600, center, max-w-lg mx-auto — leading-relaxed (home hero-sub era lh 28px). Clases: text-base md:text-lg text-gray-600 leading-relaxed max-w-lg mx-auto",
+    "h2-tarjeta-zona": "36px / 700 / lh 45px / blanco — las tarjetas usan H2 (home usaba H3 24/900). Clases: text-3xl md:text-4xl font-bold text-white leading-tight mb-1",
+    "p-tarjeta-zona": "14px / 400 / lh 19.25px / white/90 — NUEVO (tarjetas de home no tenían descripción). Clases: text-sm text-white/90 leading-snug",
+    "h2-avances": "36px / 700 / lh 45px / blanco — mismo rol que h2-seccion-chica de home pero weight 700, no 900. Clases: text-3xl md:text-4xl font-bold text-white leading-tight mb-3",
+    "p-sub-avances": "16px / 400 / lh 26px / white/70 — text-base leading-relaxed. Clases: text-white/70 text-base leading-relaxed",
+    "h3-tarjeta-avance": "14px / 700 / lh 19.25px / accent #C8D400 — NUEVO. Clases: text-accent font-bold text-sm leading-snug mb-1",
+    "p-fecha-avance": "12px / 400 / lh 16px / white/50 («• 2026»). Clases: text-white/50 text-xs mb-2",
+    "p-parrafo-avance": "12px / 400 / lh 19.5px / white/80. Clases: text-white/80 text-xs leading-relaxed",
+    "chip-ver-mas": "14px / 600 / lh 20px — DESVÍA de home (chip 700); ver componente"
+  },
+  "sectionBackgrounds": {
+    "hero": "#F0ECE4 (bg-[#f0ece4]) + SVG patrón topográfico inline absolute inset-0 opacity-[0.12] (raw/zonas-hero-pattern.svg); section relative overflow-hidden py-14 px-5 md:px-10 lg:px-16",
+    "zonas-grid": "#F0ECE4 liso, SIN patrón (verificado con screenshot de sección); section px-5 md:px-10 lg:px-16 pb-16",
+    "avances": "#0F1A0A sólido (bg-forest); section py-14 px-5 md:px-10 lg:px-16",
+    "nota-header": "header canónico transparente con links blancos queda sobre fondo crema #F0ECE4 → links del nav casi ilegibles a 1440 (rasgo real del sitio, no bug de captura; el CTA accent y el h1 oscuro sí contrastan)"
+  },
+  "componentes": {
+    "heroPatron": {
+      "svg": "absolute inset-0 w-full h-full opacity-[0.12] pointer-events-none, viewBox 0 0 900 400, preserveAspectRatio xMidYMid slice, aria-hidden true",
+      "paths": "10 paths fill none stroke #5a7045 stroke-width 1.2 (curvas topográficas C/S)",
+      "archivo": "outerHTML completo en raw/zonas-hero-pattern.svg — es SVG inline del código, NO archivo de public/"
+    },
+    "zonasListas": {
+      "movil": "flex flex-col gap-4 md:hidden — PILA VERTICAL (no carrusel) con las 3 tarjetas",
+      "desktop": "hidden md:grid md:grid-cols-3 gap-5",
+      "nota": "el DOM duplica las 3 tarjetas (2 listas separadas); esto explica el href 2x que registró el sitemap. Distinto de home, que usaba UNA lista responsive con overflow-x"
+    },
+    "zoneCard": {
+      "clase": "relative block rounded-3xl overflow-hidden h-52 md:h-64 w-full group",
+      "desvios": "rounded-3xl 24px (home: rounded-2xl 16px) · altura fija h-52/md:h-64 = 208px/256px apaisada (home: aspect-[3/4] vertical) · h2 36/700 (home h3 24/900) · trae párrafo descripción (home no)",
+      "hijos": [
+        "IMG object-cover transition-transform duration-500 group-hover:scale-105 (fill)",
+        "DIV absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent",
+        "DIV absolute inset-0 flex items-end justify-between gap-4 p-5 > [DIV flex-1 min-w-0 (h2 + p)] + [DIV shrink-0 self-end (chip)]"
+      ]
+    },
+    "chipVerMasZonas": {
+      "clase": "inline-flex items-center gap-2 bg-accent text-black font-semibold text-sm px-4 py-2 rounded-full whitespace-nowrap",
+      "computado": { "bg": "#c8d400", "color": "#000", "fontSize": "14px", "fontWeight": "600", "padding": "8px 16px", "radius": "rounded-full", "gap": "8px" },
+      "icono": "svg 16x16 viewBox 0 0 16 16 fill none, path 'M3 8h10M9 4l4 4-4 4' stroke currentColor",
+      "desvios": "vs chip de home: weight 600 (home 700) · text-black (home text-gray-900) · gap-2 (home gap-1) · flecha 16x16 'M3 8h10M9 4l4 4-4 4' (home 24x24 w-3.5 'M5 12h14M12 5l7 7-7 7') · SIN group-hover:bg-accent-dark (home lo tenía)"
+    },
+    "avancesListas": {
+      "desktop": "hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-5 mb-8",
+      "movil": "md:hidden flex gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-5 px-5 snap-x snap-mandatory — CON SNAP (el carrusel de home NO tenía)",
+      "dots": "md:hidden flex justify-center gap-2 mt-6 — 5 BUTTON aria-label 'Ir al avance N'; activo: rounded-full transition-all duration-300 bg-accent w-6 h-2 (pastilla 24x8); inactivo: bg-white/30 w-2 h-2",
+      "nota": "tarjetas también duplicadas 2x en DOM (lista desktop + lista móvil)"
+    },
+    "advanceCard": {
+      "clase": "flex flex-col (desktop); en móvil cada slide agrega w-[80vw] max-w-[320px] shrink-0 snap-start (ver zonas-mobile-notes)",
+      "imgWrap": "relative w-full h-48 rounded-2xl overflow-hidden mb-3 shrink-0 (192px de alto)",
+      "img": "object-cover (fill)",
+      "textos": "h3 accent 14/700 + p fecha white/50 12/16 + p white/80 12/19.5"
+    },
+    "heroSection": {
+      "clase": "relative overflow-hidden bg-[#f0ece4] py-14 px-5 md:px-10 lg:px-16",
+      "contenido": "div centrado max-w [h1 + p max-w-lg mx-auto]; py-14 = 56px arriba/abajo; el nav fijo transparente queda encima del crema"
+    }
+  },
+  "notas": [
+    "px de sección aquí: px-5 md:px-10 lg:px-16 (home usaba px-4 md:px-8 lg:px-16) — gutter móvil 20px, no 16px",
+    "no hay video ni background-image CSS en toda la página (videos: [], bgs: [])",
+    "títulos de esta pantalla usan font-bold 700 en vez del font-black 900 de home (h1, h2 sección y h2 tarjeta)",
+    "colores lab()/oklab() del script son serialización de Chrome; fuente de verdad: cssVarsTheme de home-styles.json + coloresNuevos de arriba"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "pantalla": "suscripcion",
+  "ruta": "/suscripcion",
+  "viewport": "1440x900",
+  "fuente": "browser_evaluate sobre el sitio real, 2026-08-19",
+  "alcance": "SOLO desviaciones y novedades respecto a raw/home-styles.json y raw/zonas-styles.json; lo no listado es idéntico a home (fontFamily Geist única, cssVarsTheme, nav, menú móvil, footer)",
+  "layoutGlobal": {
+    "nota": "RASGO ÚNICO de esta pantalla: TODO el contenido (h1, toggle, planes, CTA, beneficios) vive en contenedores max-w-md mx-auto (448px) — layout de una sola columna angosta centrada, idéntico a 1440 y a 390. No hay variante desktop de layout: solo el h1/h2 escalan con md:/lg:.",
+    "collageFueraDeSection": "el collage-hero es un DIV w-full overflow-hidden directo en <main>, ANTES de la primera <section>"
+  },
+  "coloresNuevosOEnUsoNuevo": {
+    "#243B1A": "dark-green — PRIMERA PANTALLA QUE LO USA (en home solo estaba definido en theme): bg-dark-green en pill activo del toggle, en badge check del plan activo, y fill del rect fondo de los 6 iconos de beneficios",
+    "#99A1AF": "gray-400 (lab 65.93) — NUEVO en uso: nombre y precio de planes inactivos (text-gray-400), «/mes», microcopy legal",
+    "#6A7282": "gray-500 — text-gray-500 en subtítulo del hero y en botón inactivo del toggle (hover:text-gray-700)",
+    "#F0ECE4": "mismo crema de /zonas — aquí es el fondo de LAS DOS sections (bg-[#f0ece4]); sin patrón topográfico SVG (eso era solo de /zonas)",
+    "white/70": "bg-white/70 — NUEVO como fondo de contenedor: la franja selectora de planes (en home/zonas los white/N eran texto u overlay)",
+    "white/50": "hover:bg-white/50 en planes inactivos"
+  },
+  "paletteScriptRaw": [
+    "rgb(0, 0, 0)", "rgb(23, 23, 23)", "rgb(255, 255, 255)",
+    "oklab white/0.8", "lab gray-900", "rgb(200, 212, 0)", "oklab black/0.1",
+    "rgb(240, 236, 228)", "lab gray-600", "rgb(36, 59, 26)",
+    "oklab white/0.7", "lab gray-400 (65.93)", "lab gray-700", "lab gray-800",
+    "rgb(45, 58, 66)", "oklab white/0.5", "oklab white/0.6", "oklab white/0.4",
+    "oklab white/0.1", "oklab white/0.3"
+  ],
+  "typographyScriptRaw": [
+    "A | Geist | 16px | 400 | 24px",
+    "A | Geist | 14px | 500 | 20px",
+    "A | Geist | 14px | 700 | 20px",
+    "BUTTON | Geist | 16px | 400 | 24px",
+    "SPAN | Geist | 24px | 700 | 30px",
+    "A | Geist | 16px | 700 | 24px",
+    "H1 | Geist | 48px | 700 | 60px",
+    "P | Geist | 16px | 400 | 24px",
+    "BUTTON | Geist | 14px | 600 | 20px",
+    "P | Geist | 12px | 500 | 16px",
+    "SPAN | Geist | 20px | 700 | 20px",
+    "SPAN | Geist | 10px | 400 | 15px",
+    "SPAN | Geist | 16px | 400 | 24px",
+    "SPAN | Geist | 24px | 700 | 24px",
+    "A | Geist | 16px | 600 | 24px",
+    "P | Geist | 12px | 400 | 16.5px",
+    "H2 | Geist | 30px | 700 | 36px",
+    "LI | Geist | 16px | 400 | 24px",
+    "P | Geist | 14px | 600 | 19.25px",
+    "P | Geist | 14px | 400 | 19.25px",
+    "P | Geist | 12px | 400 | 19.5px",
+    "P | Geist | 12px | 700 | 16px",
+    "A | Geist | 14px | 400 | 20px",
+    "P | Geist | 12px | 400 | 16px"
+  ],
+  "typographyDesviaciones1440": {
+    "h1-hero": "48px / 700 / lh 60px / gray-900 — MÁS CHICO que home (60/900) y zonas (60/700). Clases: text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-2",
+    "p-hero-sub": "16px / 400 / lh 24px / gray-500 — Clases: text-base text-gray-500 mb-8 (home hero-sub era 18/400 white)",
+    "boton-toggle": "14px / 600 / lh 20px — NUEVO rol. Clases por estado en componentes.toggle",
+    "p-nombre-plan": "12px / 500 / lh 16px — NUEVO. text-xs font-medium mb-1 + text-gray-700 (activo) | text-gray-400 (inactivo)",
+    "span-precio-activo": "24px / 700 / lh 24px / gray-900 — font-bold leading-none text-2xl",
+    "span-precio-inactivo": "20px / 700 / lh 20px / gray-600 — font-bold leading-none text-xl (el precio activo es UN paso mayor)",
+    "span-periodo": "10px / 400 / lh 15px / gray-400 — text-[10px] self-end mb-0.5 (valor arbitrario 10px, único en el sitio)",
+    "a-cta-principal": "16px / 600 / lh 24px / blanco — NUEVO: CTA como <a> text-base font-semibold (los CTA de home eran 14px/700)",
+    "p-legal": "12px / 400 / lh 16.5px / gray-400 — text-xs text-center mt-3 leading-snug",
+    "h2-beneficios": "30px / 700 / lh 36px / gray-900 — text-2xl md:text-3xl font-bold mb-6 (rol h2 más chico que cualquier h2 de home/zonas)",
+    "p-titulo-beneficio": "14px / 600 / lh 19.25px / gray-900 — font-semibold text-sm leading-snug mb-0.5",
+    "p-desc-beneficio": "14px / 400 / lh 19.25px / gray-600 — text-sm text-gray-600 leading-snug"
+  },
+  "sectionBackgrounds": {
+    "collage-hero": "sin fondo propio: DIV w-full overflow-hidden con 5 <img> fill object-cover (fila 1: grid grid-cols-3 de aspect-square; fila 2: flex con flex-[3] object-top + flex-[2]); el nav fijo transparente queda sobre las fotos",
+    "planes": "#F0ECE4 — section bg-[#f0ece4] px-5 pt-10 pb-8 md:px-10 lg:px-16",
+    "beneficios": "#F0ECE4 — section bg-[#f0ece4] px-5 pt-2 pb-16 md:px-10 lg:px-16 (continúa el mismo crema: visualmente es un solo lienzo)",
+    "footer": "#2D3A42 canónico"
+  },
+  "componentes": {
+    "collageHero": {
+      "wrapper": "w-full overflow-hidden (DIV en main, antes de las sections)",
+      "fila1": "grid grid-cols-3 — 3 celdas relative aspect-square con img fill object-cover (collage-1/2/3.jpg)",
+      "fila2": "flex con STYLE INLINE height:clamp(200px, 55vw, 440px) — relative flex-[3] con hero-main.jpg (object-cover object-top) + relative flex-[2] con hero-secondary.jpg (object-cover); a 1440 gana el cap 440px, a 390 gana 55vw = 214.5px, piso 200px",
+      "nota": "sin overlays, sin gradientes, sin texto encima (el nav fijo es lo único que se superpone)"
+    },
+    "toggleBilling": {
+      "wrapper": "flex items-center bg-white rounded-full p-1 w-fit mb-6 shadow-sm",
+      "botonActivo": "px-5 py-2 rounded-full text-sm font-semibold transition-colors bg-dark-green text-white",
+      "botonInactivo": "px-5 py-2 rounded-full text-sm font-semibold transition-colors text-gray-500 hover:text-gray-700",
+      "aria": "SIN aria-pressed ni aria-selected — el estado activo solo se comunica visualmente (bg-dark-green + texto blanco). En Fase 2 conviene añadir accessibilityState",
+      "computadoActivo": { "bg": "#243b1a", "color": "#fff", "padding": "8px 20px", "radius": "rounded-full", "fontSize": "14px", "fontWeight": "600" }
+    },
+    "planSelector": {
+      "wrapper": "bg-white/70 rounded-3xl p-2 grid grid-cols-3 gap-1 mb-5",
+      "botonActivo": "relative rounded-2xl p-3 text-center transition-all bg-white shadow-md",
+      "botonInactivo": "relative rounded-2xl p-3 text-center transition-all bg-transparent hover:bg-white/50",
+      "checkActivo": "span absolute top-2 right-2 w-5 h-5 bg-dark-green rounded-full flex items-center justify-center + svg check 12x12 (w-3 h-3 text-white, path 'M2 6 L5 9 L10 3') — ÚNICA marca de plan activo; NO hay badge «más popular» en ningún plan",
+      "aria": "SIN aria-pressed — igual que el toggle",
+      "estructuraInterna": "p nombre (text-xs font-medium mb-1) + div flex items-baseline justify-center gap-0.5 [span precio + span periodo text-[10px] self-end mb-0.5]"
+    },
+    "ctaComenzar": {
+      "tag": "A (link, no button)",
+      "clase": "block w-full bg-gray-900 text-white text-center font-semibold text-base py-4 rounded-full hover:bg-gray-800 transition-colors",
+      "computado": { "bg": "gray-900 #101828", "color": "#fff", "padding": "16px 0 (py-4, full width del max-w-md)", "radius": "rounded-full", "fontSize": "16px", "fontWeight": "600" },
+      "hrefDinamico": "cambia con plan y billing seleccionados — ver suscripcion-interactions.md",
+      "desvio": "único CTA del sitio con w-full 16px/600 py-4 (los de home eran inline-block 14px/700 px-7 py-3)"
+    },
+    "beneficioItem": {
+      "ul": "flex flex-col gap-5",
+      "li": "flex items-start gap-4",
+      "icono": "div w-10 h-10 shrink-0 con svg 40x40 inline (rect fondo #243b1a rx 8 + trazos blancos 1.5) — los 6 svg completos en suscripcion-assets.json",
+      "textos": "div con p título (font-semibold text-gray-900 text-sm leading-snug mb-0.5) + p descripción (text-sm text-gray-600 leading-snug)"
+    }
+  },
+  "notas": [
+    "SIN duplicación DOM 2x (patrón de home/zonas): 2 sections, 1 toggle, 3 botones de plan, 6 li, 5 imgs — una sola instancia de todo; el layout ya es móvil (max-w-md) en desktop",
+    "gutter de secciones: px-5 md:px-10 lg:px-16 (patrón de /zonas, no el px-4 de home)",
+    "pesos: font-bold 700 en títulos (como /zonas) y font-semibold 600 en toggle/planes/CTA — el 900 de home no aparece aquí; tampoco el accent #C8D400 en el contenido (solo en el CTA canónico del nav)",
+    "colores lab()/oklab() del script son serialización de Chrome; fuente de verdad: cssVarsTheme de home-styles.json + coloresNuevosOEnUsoNuevo de arriba"
+  ]
+}

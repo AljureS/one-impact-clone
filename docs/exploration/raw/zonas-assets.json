@@ -1,0 +1,31 @@
+{
+  "pantalla": "zonas",
+  "ruta": "/zonas",
+  "fuente": "browser_evaluate document.images sobre el sitio real, 2026-08-19",
+  "notaCruce": "public/ NO está en el repo al momento de esta misión: el cruce se hizo contra el árbol §1.4 de PLAYBOOK.md; todo asset queda 'pendiente verificación física' hasta que el dev copie el zip a public/",
+  "imgs": [
+    { "src": "/images/logo_blanco.svg", "alt": "One Impact", "natural": "300x117", "usos": "header (120x47) y footer (120x47)", "local": "public/images/logo_blanco.svg (§1.4)", "estado": "pendiente verificación física" },
+    { "src": "/images/zones/amazonia.jpg", "alt": "Amazonía", "natural": "384x257", "usos": "tarjeta zona Amazonía (2x en DOM: lista móvil + grid desktop)", "local": "public/images/zones/amazonia.jpg (§1.4)", "estado": "pendiente verificación física", "nota": "misma imagen que usa la tarjeta Amazonia de home" },
+    { "src": "/images/zones/mexico.jpg", "alt": "México", "natural": "800x410", "usos": "tarjeta zona México (2x en DOM)", "local": "public/images/zones/mexico.jpg (§1.4)", "estado": "pendiente verificación física" },
+    { "src": "/images/zones/africa.jpg", "alt": "África", "natural": "1220x814", "usos": "tarjeta zona África (2x en DOM)", "local": "public/images/zones/africa.jpg (§1.4)", "estado": "pendiente verificación física" },
+    { "src": "/images/advances/guainia.jpg", "alt": "Restauración de ecosistemas en Guainía", "natural": "1920x1080", "usos": "tarjeta avance 1 (2x en DOM)", "local": "public/images/advances/guainia.jpg (§1.4)", "estado": "pendiente verificación física" },
+    { "src": "/images/advances/yucatan.jpg", "alt": "Inicio de diagnóstico ecológico costero en Yucatán", "natural": "512x357", "usos": "tarjeta avance 2 (2x en DOM)", "local": "public/images/advances/yucatan.jpg (§1.4)", "estado": "pendiente verificación física" },
+    { "src": "/images/advances/corredores.jpg", "alt": "Diseño de corredores verdes en savana oriental", "natural": "2464x1856", "usos": "tarjeta avance 3 (2x en DOM)", "local": "public/images/advances/corredores.jpg (§1.4)", "estado": "pendiente verificación física" },
+    { "src": "/images/advances/borneo-monitoreo.jpg", "alt": "Sistema de monitoreo satelital en Borneo", "natural": "800x600", "usos": "tarjeta avance 4 (2x en DOM)", "local": "public/images/advances/borneo-monitoreo.jpg (§1.4)", "estado": "pendiente verificación física" },
+    { "src": "/images/advances/amazonia-carbono.jpg", "alt": "Certificación de créditos de carbono en Amazonía", "natural": "1280x720", "usos": "tarjeta avance 5 (2x en DOM)", "local": "public/images/advances/amazonia-carbono.jpg (§1.4)", "estado": "pendiente verificación física" }
+  ],
+  "videos": [],
+  "bgs": [],
+  "inline": [
+    { "tipo": "svg-inline", "que": "patrón topográfico del hero (10 paths stroke #5a7045)", "local": "NO existe en public/ — capturado completo en docs/exploration/raw/zonas-hero-pattern.svg", "estado": "sin archivo físico; reproducir desde el crudo" }
+  ],
+  "assetsDeSeccion14NoUsadosAqui": [
+    "zones/borneo.jpg y zones/patagonia.jpg (usados solo en home)",
+    "videos/one-impact-intro.mp4, hero-bg.jpg, stats-bg.jpg, video-thumbnail.jpg, logo_negro.svg, testimonials/*, allies/*, subscription/* (no aparecen en /zonas)"
+  ],
+  "notas": [
+    "los 5 advances/*.jpg de §1.4 se usan TODOS y ÚNICAMENTE en esta pantalla",
+    "src directos a /images/... sin /_next/image (export estático sin optimizador, igual que home)",
+    "cada imagen de tarjeta aparece 2x en el DOM por las listas duplicadas móvil/desktop"
+  ]
+}

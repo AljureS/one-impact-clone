@@ -1,6 +1,6 @@
 # CLAUDE.md — cómo se trabaja en este repo
 
-**Qué construir** lo dice el playbook (`PLAYBOOK.md`, pasa a `docs/PLAYBOOK.md` al cerrar Fase 1). **Cómo trabajar** lo dice este archivo. Léelos en ese orden y no empieces sin haber leído el playbook completo.
+**Qué construir** lo dice el playbook (`docs/PLAYBOOK.md`). **Cómo trabajar** lo dice este archivo. Léelos en ese orden y no empieces sin haber leído el playbook completo.
 
 Entrega: **jueves 20 de agosto, 6:00 pm**. Se evalúa el resultado *y* el proceso (criterio de adaptación web→móvil, uso de agentes, historia de git, README). El tiempo es corto: las reglas de abajo están calibradas para no gastarlo en ceremonia.
 

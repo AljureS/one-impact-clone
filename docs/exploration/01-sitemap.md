@@ -90,3 +90,15 @@ Conclusión: los HTML de esas rutas no existen (o no son legibles) en el origin 
 - Misiones `pantalla` posibles por navegador: `home`, `zonas`, `suscripcion` (+ `registro` si el dev lo incluye en alcance).
 - Misiones `zona-{slug}` y `nosotros`: **bloqueadas**; necesitan captura manual del dev o los artefactos quedan como huecos documentados.
 - La misión `pantalla` de `/suscripcion` debe verificar si el href del CTA «Comenzar mi travesía» cambia con el toggle Mensual/Anual y por plan (`?plan=…&billing=…`).
+
+## Actualización (consolidación, 2026-08-19)
+
+Dos datos de los crudos de pantalla precisan lo anotado arriba:
+
+- El href duplicado 2× por tarjeta en `/zonas` **no** es "grid/carrusel": son
+  dos listas DOM separadas — pila móvil (`flex flex-col md:hidden`) y grid
+  desktop (`hidden md:grid`) — verificado en `raw/zonas-styles.json`.
+- La verificación pendiente del CTA «Comenzar mi travesía» quedó resuelta:
+  el href cambia con plan y billing — matriz completa de 6 combinaciones
+  (`plan=basico|estandar|premium` × `billing=monthly|annual`) en
+  `05-interactions.md` §6.

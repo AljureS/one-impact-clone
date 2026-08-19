@@ -63,3 +63,39 @@ RN del equipo.
   sombras en `foundation-builder`.
 
 **Aceptado / ajustado por el dev:** (pendiente de revisión del dev)
+
+---
+
+## Fase 1 — Exploración del sitio (2026-08-18/19)
+
+**Qué se pidió:** planear Fase 1 (plan mode, aprobado por el dev) y ejecutarla
+con un /loop de calidad que verificara cada artefacto contra los estándares
+del playbook antes de lanzar la siguiente unidad, usando los subagentes y
+skills del equipo.
+
+**Qué hizo el agente:**
+- Orquestación: 4 lanzamientos de `site-explorer` (sitemap, home, zonas,
+  suscripcion) SIEMPRE secuenciales (navegador MCP único) + 1
+  `exploration-consolidator`. Cada ciclo del loop: verificación de archivos
+  en disco + spot-check visual de un screenshot contra el 02-content
+  correspondiente (3/3 verbatim ✓).
+- Resiliencia: la misión home cayó 2 veces por límite de API; se reanudó el
+  MISMO agente por SendMessage con orden de persistir-a-disco-primero — sin
+  pérdida de datos ni re-trabajo de navegador.
+- Producido: `01-sitemap` (5 slugs desde hrefs reales) · `02-content-*` ×3
+  verbatim · `03-design-tokens` (30 colores con procedencia, 6 conflictos
+  documentados) · `04-assets-map` (27/27 con verificación física; duplicado
+  patagonia≡video-thumbnail por MD5) · `05-interactions` (3 patrones de
+  carrusel, matriz de 6 hrefs del toggle) · `00-gaps` (§1.5 por ítem) ·
+  56 screenshots 1440/390 por sección y estado.
+- Límite honesto: `/nosotros` y las 5 fichas `/zonas/[slug]` devuelven 403
+  del origin (4 vías agotadas, evidencia PNG); `/registro` descubierta fuera
+  del playbook. Ambas cosas quedaron como decisión del dev, no se inventó
+  contenido (regla 1).
+
+**Aceptado / ajustado por el dev (2026-08-19):** decidió que las fichas de
+zona y `/nosotros` se diseñen **derivadas** de lo capturado — simples, como
+propuesta de lo que debería ir ahí, documentadas en README como
+interpretación y no réplica — y que `/registro` quede fuera de alcance (solo
+el link documentado). Con eso autorizó cerrar la fase y ejecutar el
+checkpoint.

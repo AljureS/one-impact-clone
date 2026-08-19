@@ -1,0 +1,260 @@
+{
+  "pantalla": "home",
+  "ruta": "/",
+  "viewport": "1440x900",
+  "fuente": "browser_evaluate sobre el sitio real, 2026-08-18",
+  "fontFamily": {
+    "unica": "Geist",
+    "cssVar": "--font-geist-sans: \"Geist\",\"Geist Fallback\"",
+    "nota": "toda la página usa Geist; no hay segunda familia"
+  },
+  "cssVarsTheme": {
+    "nota": "variables reales del CSS de Tailwind v4 del sitio (leídas de styleSheets)",
+    "--color-accent": "#c8d400",
+    "--color-accent-dark": "#a8b200",
+    "--color-forest": "#0f1a0a",
+    "--color-dark-green": "#243b1a",
+    "--color-red-500": "#fb2c36",
+    "--color-gray-100": "#f3f4f6",
+    "--color-gray-200": "#e5e7eb",
+    "--color-gray-300": "#d1d5dc",
+    "--color-gray-400": "#99a1af",
+    "--color-gray-500": "#6a7282",
+    "--color-gray-600": "#4a5565",
+    "--color-gray-700": "#364153",
+    "--color-gray-800": "#1e2939",
+    "--color-gray-900": "#101828",
+    "--color-neutral-100": "#f5f5f5",
+    "--color-black": "#000",
+    "--color-white": "#fff",
+    "--font-weight-normal": "400",
+    "--font-weight-medium": "500",
+    "--font-weight-semibold": "600",
+    "--font-weight-bold": "700",
+    "--font-weight-black": "900",
+    "--radius-lg": ".5rem",
+    "--radius-xl": ".75rem",
+    "--radius-2xl": "1rem",
+    "--radius-3xl": "1.5rem"
+  },
+  "paletteScriptRaw": [
+    "rgb(0, 0, 0)",
+    "rgb(23, 23, 23)",
+    "rgb(255, 255, 255)",
+    "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+    "lab(8.11897 0.811279 -12.254)",
+    "rgb(200, 212, 0)",
+    "oklab(0 0 0 / 0.1)",
+    "lab(47.7841 -0.393182 -10.0268)",
+    "oklab(0 0 0 / 0.3)",
+    "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+    "oklab(0.999994 0.0000455678 0.0000200868 / 0.4)",
+    "rgb(219, 230, 76)",
+    "rgb(30, 30, 30)",
+    "lab(11.2636 -0.00000745058 0.0000089407 / 0.6)",
+    "rgb(255, 246, 234)",
+    "oklab(0.83234 -0.0754756 0.170899 / 0.1)",
+    "oklab(0.83234 -0.0754756 0.170899 / 0.05)",
+    "lab(35.6337 -1.58697 -10.8425)",
+    "rgb(255, 241, 218)",
+    "lab(91.6229 -0.159115 -2.26791)",
+    "oklab(0.999994 0.0000455678 0.0000200868 / 0.25)",
+    "oklab(0.999994 0.0000455678 0.0000200868 / 0.5)",
+    "lab(27.1134 -0.956401 -12.3224)",
+    "rgb(255, 233, 122)",
+    "oklab(0.999994 0.0000455677 0.0000200868 / 0.6)",
+    "lab(96.52 -0.0000298023 0.0000119209)",
+    "oklab(0.20192 -0.0247866 0.023544 / 0.8)",
+    "rgb(45, 58, 66)",
+    "oklab(0.999994 0.0000455677 0.0000200868 / 0.7)",
+    "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+    "oklab(0.999994 0.0000455678 0.0000200868 / 0.3)"
+  ],
+  "paletteInterpretada": {
+    "#C8D400": "accent (rgb 200,212,0) — CTAs amarillo-verde, chip Ver más, fondo menú móvil, cifra 35K",
+    "#A8B200": "accent-dark — hover de accent (group-hover:bg-accent-dark en chip Ver más)",
+    "#DBE64C": "rgb(219,230,76) — fondo sección zonas (bg-[#dbe64c])",
+    "#FFF6EA": "rgb(255,246,234) — fondo sección testimonios (bg-[#FFF6EA])",
+    "#FFF1DA": "rgb(255,241,218) — aparece en paleta (elemento decorativo dentro de testimonios)",
+    "#FFE97A": "rgb(255,233,122) — aparece en paleta (elemento decorativo dentro de testimonios)",
+    "#2D3A42": "rgb(45,58,66) — fondo footer (bg-[#2d3a42])",
+    "#1E1E1E": "rgb(30,30,30) — fondo CTA 'Explora todas las zonas' (bg-[#1E1E1E])",
+    "#0F1A0A": "forest — overlay bg-forest/80 sobre stats-bg.jpg en stats-cta",
+    "#243B1A": "dark-green — definido en theme; no observado directamente en home a 1440",
+    "#F5F5F5": "neutral-100 (lab 96.52) — fondo sección aliados (bg-neutral-100)",
+    "#101828": "gray-900 (lab 8.12 0.81 -12.25) — color de texto sobre claros y de CTAs claros",
+    "#364153": "gray-700 (lab 35.63) — texto párrafo quote testimonios (text-gray-700)",
+    "#4A5565": "gray-600 (lab 47.78) — subtítulos/roles secundarios",
+    "#1E2939": "gray-800 (lab 27.11) — texto oscuro secundario",
+    "#E5E7EB": "gray-200 (lab 91.62) — placeholder bg de tarjetas de imagen (bg-gray-200)",
+    "rgb(23,23,23)": "color de texto por defecto del body (neutral-950 de Tailwind)",
+    "blanco con alphas": "oklab(0.9999… / 0.1–0.8) = white/10 … white/80 — overlays, bordes de avatar (border-white/60), texto hero secundario",
+    "negro con alphas": "oklab(0 0 0 / 0.1|0.3) = black/10, black/30 — overlay thumbnail video; lab(11.26/0.6) = black/60 gradientes"
+  },
+  "typographyScriptRaw": [
+    "A | Geist | 16px | 400 | 24px",
+    "A | Geist | 14px | 500 | 20px",
+    "A | Geist | 14px | 700 | 20px",
+    "BUTTON | Geist | 16px | 400 | 24px",
+    "SPAN | Geist | 24px | 700 | 30px",
+    "A | Geist | 16px | 700 | 24px",
+    "H1 | Geist | 60px | 900 | 75px",
+    "P | Geist | 18px | 400 | 28px",
+    "H2 | Geist | 48px | 900 | 60px",
+    "SPAN | Geist | 16px | 400 | 24px",
+    "H3 | Geist | 24px | 900 | 32px",
+    "SPAN | Geist | 14px | 700 | 20px",
+    "P | Geist | 16px | 400 | 24px",
+    "P | Geist | 14px | 600 | 20px",
+    "P | Geist | 11px | 400 | 16.5px",
+    "P | Geist | 16px | 400 | 26px",
+    "SPAN | Geist | 11px | 400 | 13.75px",
+    "SPAN | Geist | 11px | 600 | 13.75px",
+    "A | Geist | 14px | 600 | 20px",
+    "H2 | Geist | 36px | 900 | 45px",
+    "P | Geist | 20px | 400 | 28px",
+    "P | Geist | 128px | 900 | 128px",
+    "P | Geist | 24px | 500 | 32px",
+    "P | Geist | 12px | 400 | 19.5px",
+    "P | Geist | 12px | 700 | 16px",
+    "LI | Geist | 16px | 400 | 24px",
+    "A | Geist | 14px | 400 | 20px",
+    "P | Geist | 12px | 400 | 16px"
+  ],
+  "typographyPorRol1440": {
+    "h1-hero": "60px / 900 / lh 75px / blanco (text-5xl→md:text-6xl con leading ajustado)",
+    "h2-seccion": "48px / 900 / lh 60px (secciones grandes: que-es, zonas)",
+    "h2-seccion-chica": "36px / 900 / lh 45px (testimonios 'Voces del cambio', aliados)",
+    "h3-tarjeta-zona": "24px / 900 / lh 32px / blanco",
+    "p-hero-sub": "18px / 400 / lh 28px (también subtítulos de sección)",
+    "p-stats-intro": "20px / 400 / lh 28px / white/80 ('Únete a más de')",
+    "p-stats-cifra": "128px / 900 / lh 128px / accent ('35K', text-9xl en md)",
+    "p-stats-cierre": "24px / 500 / lh 32px / blanco ('agentes de cambio')",
+    "cta-label": "14px / 700 / lh 20px (todos los CTA redondos)",
+    "cta-conecta": "14px / 600 (única con weight 600)",
+    "nav-link": "14px / 500 / blanco",
+    "p-quote-testimonio": "16px / 400 / lh 26px / gray-700 (text-sm→md:text-base leading-relaxed)",
+    "p-nombre-tarjeta-testimonio": "14px / 600 / blanco (sobre gradiente)",
+    "p-rol-tarjeta-testimonio": "11px / 400 / lh 16.5px / white/80",
+    "avatar-nombre": "11px / 600 / lh 13.75px",
+    "avatar-rol": "11px / 400 / lh 13.75px",
+    "footer-tagline": "12px / 400 / lh 19.5px / white/70",
+    "footer-heading": "12px / 700 / lh 16px / white/50 (MENÚ, CONTACTO en uppercase visual)",
+    "footer-link": "14px / 400 / lh 20px / white/80",
+    "footer-copyright": "12px / 400 / lh 16px / white/50"
+  },
+  "sectionBackgrounds": {
+    "header": "transparente (nav fixed top-0 z-50; sin bg propio, se ve sobre el video del hero)",
+    "menu-movil": "#C8D400 (bg-accent, fixed inset-0 z-[100], transition-opacity)",
+    "hero": "video one-impact-intro.mp4 object-cover + overlay bg-gradient-to-b from-black/60 via-black/20 to-black/70",
+    "que-es": "#FFFFFF (bg-white)",
+    "zonas": "#DBE64C (bg-[#dbe64c])",
+    "testimonios": "#FFF6EA (bg-[#FFF6EA], overflow-hidden)",
+    "aliados": "#F5F5F5 (bg-neutral-100)",
+    "stats-cta": "img /images/stats-bg.jpg (fill, object-cover object-center, alt 'Bosque') + overlay bg-forest/80 (#0f1a0a al 80%)",
+    "footer": "#2D3A42 (bg-[#2d3a42])"
+  },
+  "componentes": {
+    "nav": {
+      "clase": "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4 md:px-8 lg:px-16",
+      "nota": "siempre transparente; links blancos 14px/500; logo 120x47 (logo_blanco.svg)"
+    },
+    "hamburguesa": {
+      "clase": "md:hidden p-2 rounded-full text-white hover:bg-white/10 transition-colors",
+      "ariaLabel": "Abrir menú",
+      "displayA1440": "none (solo <md)"
+    },
+    "ctaHero_ExplorarZonas": {
+      "clase": "inline-block bg-white text-gray-900 font-bold text-sm px-7 py-3 rounded-full hover:bg-gray-100 transition-colors",
+      "computado": { "bg": "#fff", "color": "gray-900", "radius": "rounded-full", "padding": "12px 28px", "fontSize": "14px", "fontWeight": "700" }
+    },
+    "ctaHeader_UneteAOneImpact": {
+      "computado": { "bg": "#c8d400", "color": "gray-900", "radius": "rounded-full", "padding": "8px 20px", "fontSize": "14px", "fontWeight": "700" }
+    },
+    "ctaQueEs_QuieroHacerParte": {
+      "computado": { "bg": "#c8d400", "color": "gray-900", "radius": "rounded-full", "padding": "12px 28px", "fontSize": "14px", "fontWeight": "700" }
+    },
+    "ctaZonas_ExploraTodasLasZonas": {
+      "clase": "bg-[#1E1E1E] inline-block border text-white font-bold text-sm px-7 py-3 rounded-full hover:bg-white hover:text-gray-900 transition-colors",
+      "computado": { "bg": "#1E1E1E", "color": "#fff", "border": "1px solid #fff", "radius": "rounded-full", "padding": "12px 28px" }
+    },
+    "ctaTestimonios_ConectaConLaComunidad": {
+      "computado": { "bg": "gray-900 (lab 8.12)", "color": "#fff", "radius": "rounded-full", "padding": "14px 24px", "fontSize": "14px", "fontWeight": "600" },
+      "nota": "botón full-width dentro de la columna del testimonio (w-full)"
+    },
+    "ctaStats_QuieroUnirme": {
+      "computado": { "bg": "#c8d400", "color": "gray-900", "radius": "rounded-full", "padding": "12px 32px", "fontSize": "14px", "fontWeight": "700" }
+    },
+    "chipVerMas": {
+      "clase": "inline-flex items-center gap-1 bg-accent text-gray-900 font-bold text-sm px-4 py-2 rounded-full group-hover:bg-accent-dark transition-colors",
+      "computado": { "bg": "#c8d400", "color": "gray-900", "radius": "rounded-full", "padding": "8px 16px", "fontSize": "14px", "fontWeight": "700" },
+      "icono": "svg flecha derecha 24x24 stroke currentColor stroke-width 2.5, clase w-3.5 h-3.5, path 'M5 12h14M12 5l7 7-7 7'"
+    },
+    "zoneCard": {
+      "clase": "group flex-shrink-0 w-[75vw] md:w-auto rounded-2xl overflow-hidden relative aspect-[3/4] block",
+      "hijos": [
+        "IMG object-cover group-hover:scale-105 transition-transform duration-500",
+        "DIV absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent",
+        "DIV absolute bottom-0 left-0 right-0 p-5 (h3 24px/900 blanco + chip Ver más)"
+      ],
+      "radius": "16px (rounded-2xl)"
+    },
+    "zonesGridWrapper": {
+      "clase": "flex gap-4 overflow-x-auto scrollbar-hide pb-4 md:pb-0 md:grid md:grid-cols-3 md:overflow-visible -mx-4 px-4 md:mx-0 md:px-0",
+      "nota": "en <md es carrusel por overflow-x nativo con tarjetas w-[75vw]; en md+ grid 3 columnas estático. Sin autoplay, sin dots, sin JS de carrusel."
+    },
+    "testimonioTarjetaGrande": {
+      "clase": "relative rounded-3xl overflow-hidden bg-gray-200 aspect-[3/4]",
+      "hijos": [
+        "IMG object-cover object-center (foto del testimonio activo)",
+        "DIV absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent",
+        "DIV pointer-events-none absolute inset-0 flex items-center justify-center (contiene botón play decorativo)",
+        "DIV absolute left-4 right-4 bottom-4 (caja nombre/rol)"
+      ]
+    },
+    "testimonioAvatarBoton": {
+      "clase": "flex flex-col items-center gap-1 flex-shrink-0 focus:outline-none",
+      "avatarWrap": "block w-14 h-14 rounded-full overflow-hidden border border-white/60 bg-gray-200",
+      "estadoActivo": "aria-pressed=true en el activo (Ana por defecto); resto aria-pressed=false"
+    },
+    "aliadoLogoCirculo": {
+      "wrapper": "flex items-center justify-center w-24 h-24 md:w-28 md:h-28 rounded-full bg-white shadow-sm",
+      "img": "object-contain max-h-16 grayscale hover:grayscale-0 transition-all"
+    },
+    "heroSection": {
+      "clase": "relative min-h-screen flex items-end pb-16 md:items-center md:pb-0",
+      "hijos": [
+        "VIDEO absolute inset-0 h-full w-full object-cover pointer-events-none",
+        "DIV absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70 z-10",
+        "DIV relative z-20 w-full px-4 md:px-8 lg:px-16 md:max-w-2xl lg:max-w-3xl"
+      ]
+    },
+    "statsSection": {
+      "clase": "relative py-24 px-4 md:px-8 lg:px-16 flex items-center justify-center text-center overflow-hidden",
+      "hijos": [
+        "IMG object-cover object-center (stats-bg.jpg, fill, loading=lazy, alt 'Bosque')",
+        "DIV absolute inset-0 bg-forest/80",
+        "DIV relative z-10 (textos + CTA)"
+      ],
+      "textos": {
+        "intro": "text-white/80 text-lg md:text-xl mb-1",
+        "cifra": "text-accent font-black text-7xl md:text-9xl leading-none mb-1",
+        "cierre": "text-white text-xl md:text-2xl font-medium mb-10"
+      }
+    },
+    "videoThumbnailQueEs": {
+      "wrapper": "relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-900 mb-8 (DIV sin rol de botón)",
+      "hijos": [
+        "IMG /images/video-thumbnail.jpg (fill, object-cover, alt 'One Impact — video introductorio')",
+        "DIV absolute inset-0 bg-black/30",
+        "DIV pointer-events-none absolute inset-0 flex items-center justify-center > SPAN w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 + SVG play blanco w-7 h-7 md:w-9 md:h-9 ml-1 (path 'M8 5v14l11-7z')"
+      ]
+    }
+  },
+  "notas": [
+    "borderRadius computado '3.35544e+07px' = rounded-full de Tailwind (calc infinito)",
+    "colores lab()/oklab() del script son la serialización de Chrome para clases Tailwind: la fuente de verdad son las cssVarsTheme de arriba",
+    "no hay background-image por CSS en toda la página (bgs: []): todos los fondos de imagen son <img> de next/image con fill",
+    "logo header y footer usan el mismo /images/logo_blanco.svg a 120x47"
+  ]
+}

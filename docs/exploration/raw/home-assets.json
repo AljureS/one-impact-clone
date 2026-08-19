@@ -1,0 +1,46 @@
+{
+  "pantalla": "home",
+  "ruta": "/",
+  "fuente": "browser_evaluate tras scroll completo (lazy-load disparado), 1440x900, 2026-08-18",
+  "notaCruce": "public/ AÚN NO está en el repo: el cruce es contra el árbol de referencia §1.4 de PLAYBOOK.md. Todo match queda 'pendiente verificación física'.",
+  "imgs": [
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/logo_blanco.svg", "alt": "One Impact", "naturalW": 300, "naturalH": 117, "uso": "logo en header (120x47) y footer (120x47) — aparece 2 veces", "local": "public/images/logo_blanco.svg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/video-thumbnail.jpg", "alt": "One Impact — video introductorio", "naturalW": 828, "naturalH": 1618, "uso": "que-es: thumbnail aspect-video con overlay y botón play decorativo", "local": "public/images/video-thumbnail.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/zones/amazonia.jpg", "alt": "Amazonia", "naturalW": 384, "naturalH": 257, "uso": "zonas: tarjeta 1 (aspect-[3/4])", "local": "public/images/zones/amazonia.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/zones/borneo.jpg", "alt": "Borneo", "naturalW": 330, "naturalH": 220, "uso": "zonas: tarjeta 2", "local": "public/images/zones/borneo.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/zones/patagonia.jpg", "alt": "Patagonia", "naturalW": 828, "naturalH": 1618, "uso": "zonas: tarjeta 3 (imagen vertical 828x1618, distinta proporción que las otras dos)", "local": "public/images/zones/patagonia.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/testimonials/ana-rodriguez.jpg", "alt": "Ana Rodriguez", "naturalW": 816, "naturalH": 1456, "uso": "testimonios: tarjeta grande activa Y avatar 1 (mismo archivo 2 veces)", "local": "public/images/testimonials/ana-rodriguez.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/testimonials/carlos-mendez.jpg", "alt": "Carlos Méndez", "naturalW": 204, "naturalH": 364, "uso": "testimonios: avatar 2 (y tarjeta grande al activarlo)", "local": "public/images/testimonials/carlos-mendez.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/testimonials/lucia-torres.jpg", "alt": "Lucía Torres", "naturalW": 512, "naturalH": 512, "uso": "testimonios: avatar 3 (y tarjeta grande al activarla)", "local": "public/images/testimonials/lucia-torres.jpg", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/allies/wwf.png", "alt": "WWF", "naturalW": 1080, "naturalH": 1136, "uso": "aliados: logo 1 en círculo blanco, grayscale", "local": "public/images/allies/wwf.png", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/allies/ci.png", "alt": "Conservation International", "naturalW": 390, "naturalH": 390, "uso": "aliados: logo 2", "local": "public/images/allies/ci.png", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/allies/tnc.png", "alt": "The Nature Conservancy", "naturalW": 600, "naturalH": 450, "uso": "aliados: logo 3", "local": "public/images/allies/tnc.png", "cruce": "match §1.4 — pendiente verificación física" },
+    { "src": "https://d3foiidvo1xvi7.cloudfront.net/images/stats-bg.jpg", "alt": "Bosque", "naturalW": 554, "naturalH": 1108, "uso": "stats-cta: fondo fill object-cover con overlay forest/80; loading=lazy", "local": "public/images/stats-bg.jpg", "cruce": "match §1.4 — pendiente verificación física" }
+  ],
+  "videos": [
+    {
+      "src": "https://d3foiidvo1xvi7.cloudfront.net/videos/one-impact-intro.mp4",
+      "srcAttr": "/videos/one-impact-intro.mp4",
+      "poster": "(sin poster)",
+      "autoplay": true, "muted": true, "loop": true, "playsInline": true, "controls": false,
+      "estadoObservado": "paused=false (reproduciéndose solo al cargar)",
+      "uso": "FONDO del hero (absolute inset-0 h-full w-full object-cover pointer-events-none) — NO es el bloque 'video' de que-es",
+      "local": "public/videos/one-impact-intro.mp4",
+      "cruce": "match §1.4 — pendiente verificación física"
+    }
+  ],
+  "bgs": [],
+  "assetsDe§1.4NoUsadosEnHome": [
+    "public/images/logo_negro.svg (home solo usa logo_blanco)",
+    "public/images/hero-bg.jpg (el hero de home usa el video, no esta imagen — puede ser de otra pantalla o fallback)",
+    "public/images/zones/mexico.jpg y africa.jpg (home solo muestra amazonia/borneo/patagonia)",
+    "public/images/advances/* (5 archivos — no aparecen en home)",
+    "public/images/subscription/* (5 archivos — no aparecen en home)"
+  ],
+  "assetsNoEntregados": [],
+  "notas": [
+    "Todos los assets remotos de home calzan 1:1 con rutas del árbol §1.4 — ninguno quedó sin correspondencia",
+    "El overlay del stats y los gradientes NO son assets: son divs con clases Tailwind (ver home-styles.json)",
+    "next/image sirve los archivos sin transformación de URL (src directo a /images/...), por eso naturalW/H son las dimensiones reales del archivo"
+  ]
+}
