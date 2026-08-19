@@ -1,3 +1,28 @@
+# Fase 1 — Exploración del sitio (en curso)
+
+Plan aprobado (plan mode). Ejecución con /loop de calidad: verificar los
+artefactos de cada subagente contra el estándar del playbook antes de lanzar
+el siguiente. Exploradores SIEMPRE de a uno (navegador MCP compartido).
+
+- [x] Misión sitemap (site-explorer): 01-sitemap.md — 5 slugs enumerados
+      (amazonia, mexico, africa, borneo, patagonia); detalle de zonas y
+      /nosotros devuelven 403 real del origin (4 vías agotadas, evidencia PNG)
+- [ ] Pantalla home (site-explorer)
+- [ ] Pantalla zonas (site-explorer)
+- [ ] Pantalla suscripcion (site-explorer) — verificar CTA ?plan=&billing= con el toggle
+- [ ] Pantallas bloqueadas (403 origin): zona-[slug] ×5 y nosotros —
+      PENDIENTE DEV: captura manual o material de referencia; sin eso quedan
+      como huecos documentados del gate §1.5
+- [ ] /registro: fuera del alcance del playbook (5 pantallas); documentado en
+      sitemap — el dev decide si se explora aparte
+- [ ] `public/` en el repo (lo añade el dev) — necesario antes de consolidar
+- [ ] Consolidación (exploration-consolidator): 01/03/04/05 + reporte de huecos
+- [ ] Gate §1.5 con evidencia (verify-block)
+- [ ] Checkpoint: PLAYBOOK.md → docs/, ref en CLAUDE.md, ai-workflow.md,
+      review aquí, commits propuestos al dev
+
+---
+
 # Bloque 0.1: perfeccionar la parte React Native con los docs oficiales
 
 Goal del dev: escanear los docs de React Native (archive.reactnative.dev →
