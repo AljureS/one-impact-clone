@@ -5,9 +5,7 @@ como app nativa: **Expo (SDK 57) · TypeScript estricto · Expo Router ·
 expo-video**. Sin backend: todo el contenido vive tipado en `src/data/`,
 extraído verbatim del sitio real durante una fase de exploración documentada.
 
-<!-- GIF: grabar la app en uso (Expo Go o simulador), <10 MB.
-     Sugerencia: home → carrusel → detalle de zona → toggle de suscripción.
-     ![Demo](docs/demo.gif) -->
+![Demo de la app en el simulador, a 4× de velocidad](docs/demo.gif)
 
 ## Setup
 
