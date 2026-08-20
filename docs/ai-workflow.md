@@ -139,3 +139,82 @@ cada bloque verificado con verify-block antes de continuar.
 
 **Aceptado / ajustado por el dev:** (pendiente de revisión; commits
 propuestos por bloque en tasks/todo.md y el reporte final)
+
+---
+
+## Bloque F — Feedback UI/UX del dev: "es una app, no una web" (2026-08-19)
+
+**Qué se pidió (feedback directo del dev tras revisar la app):** (1) el
+footer sobra en una app — quizá solo en Nosotros, y ahí mejor para teléfono;
+(2) glassmorphism donde haya elementos superpuestos, solo en/durante el
+overlap (el dev añadió el skill `ui-ux-pro-max` para esto); (3) verificar que
+los videos/cinemática existen y no mostrar lo que no exista. Plan aprobado en
+plan mode + /loop contra el playbook.
+
+**Qué hizo el agente:**
+- Footer: eliminado de home/zonas/detalle/suscripción (cada pantalla cierra
+  en su última sección full-bleed, sin corte); movido a
+  `features/about/components/` (único consumidor) y rediseñado phone-first
+  con la data existente — pila centrada, contacto integrado (se eliminó la
+  sección CONTACTO duplicada de AboutScreen), targets 44pt verificados en
+  DOM. `src/data/` intacto.
+- Glass (spec del skill mapeado a tokens existentes black30/white20):
+  pastilla tras el logo flotante — de paso resuelve el bug latente del logo
+  blanco ilegible sobre secciones claras —, BlurView en el play de que-es
+  (el sitio real lleva `backdrop-blur-sm` ahí: fidelidad recuperada) y en el
+  back flotante del detalle. Descartado con criterio: glass en la tab bar
+  (no hay overlap: el contenido no pasa por debajo) y en los scrims
+  fotográficos del sitio (fidelidad manda). Dependencia nueva aprobada en
+  plan: expo-blur.
+- Videos: inventario (ambos usos = `one-impact-intro.mp4`, único video del
+  sitio, que el propio sitio usa de fondo del hero — el hero de la app ES
+  fiel). **Bug real cazado por el gate:** en web el tap de que-es no
+  reproducía — `player.play()` corría en el mismo tick del montaje del
+  VideoView y expo-video web itera `_mountedVideos` (aún vacío) → cero
+  llamadas al elemento. Fix de causa raíz: play como efecto del estado
+  `showPlayer`. Evidencia de línea de tiempo: tap → playing → 9.8s completos
+  con audio → ended. Hero verificado avanzando en web y renderizando en iOS.
+- Falso culpable durante el diagnóstico: el server de gates corría con
+  `CI=1`, que desactiva el watcher de Metro → bundle viejo enmascaraba el
+  fix (regla nueva en lessons).
+
+**Qué se rechazó/ajustó:** nada del feedback se recortó; dos ampliaciones
+mínimas justificadas (back del detalle con el mismo glass — misma regla de
+UI flotante; fix del play — el gate lo exigía).
+
+**Aceptado / ajustado por el dev:** (pendiente de revisión)
+
+---
+
+## Fase 3 — Auditoría (2026-08-19/20)
+
+**Qué se pidió:** plan de Fase 3 (plan mode, aprobado) y ejecución según la
+doctrina del skill playbook: auditores que reportan con evidencia sin
+arreglar, fixes por bloques del orquestador, re-audit hasta verde.
+
+**Qué hizo el agente:**
+- Ronda 1: `security-auditor` + `slop-auditor` + `qa-auditor` en paralelo
+  (solo qa usa el navegador), cada uno con las divergencias autorizadas del
+  bloque F en su brief y reporte a `tasks/audit-*.md`.
+- Resultados: security 5/7 → fixes → verde salvo la acción git del dev;
+  slop 0 bloqueantes + 6 menores → fixes → **8/8**; qa **15/15 funcional y
+  13/13 visual con 0 hallazgos** (deep links 5/5, toggle, carruseles con
+  offsets exactos del sitio, ambos videos reproduciendo).
+- Fixes del orquestador (gates tsc/eslint/knip + spot visual en DOM):
+  justificación de `npm audit` en README (16 vulns transitivas de tooling
+  build-time, sin fix upstream no-breaking); `svgGradientStops()` en theme
+  (5 copias → 1 helper, stops verificados idénticos); poda de
+  `menuHeading` + 3 tokens de tipografía del menú web; rename
+  `AdvanceCard → ProgressUpdateCard` (código unificado en `progress*`,
+  «advance*» solo en nombres-espejo del sitio); `spacing[2]`/`spacing[24]`
+  añadidos (valores observados) y 7 usos unificados; 2 assets sin uso
+  fuera de `assets/` (copias en `public/`); nota de icono/splash template
+  en README.
+- Cierre DoD: clon limpio (`git clone` + `npm install` + `npx expo start`)
+  sirviendo y compilando el bundle web (HTTP 200) — validado sobre HEAD;
+  re-verificar tras los commits.
+
+**Qué queda del dev:** `git rm --cached .DS_Store` en su próximo commit;
+device-QA de §3.3 (7 ítems listados en tasks/audit-qa.md); grabar el GIF.
+
+**Aceptado / ajustado por el dev:** (pendiente de revisión)

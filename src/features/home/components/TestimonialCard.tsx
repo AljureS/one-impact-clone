@@ -19,18 +19,11 @@ import {
   overlays,
   radius,
   spacing,
+  svgGradientStops,
   typography,
 } from '@/shared/theme';
 
-// Mismo fix cross-platform que ZoneCard: react-native-svg nativo ignora el
-// alfa del stopColor → color sólido + stopOpacity con el alfa del token.
-const GRADIENT_STOPS = gradients.testimonialCard.map((rgba, index, all) => ({
-  offset: index / (all.length - 1),
-  opacity:
-    rgba === overlays.transparent
-      ? 0
-      : Number(rgba.slice(rgba.lastIndexOf(',') + 1, -1)),
-}));
+const GRADIENT_STOPS = svgGradientStops(gradients.testimonialCard);
 
 interface TestimonialCardProps {
   testimonial: Testimonial;

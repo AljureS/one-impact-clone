@@ -3,11 +3,13 @@
 // compilación cualquier valor fuera de la escala.
 
 export const spacing = {
+  2: 2, // gap-0.5 / mt-0.5 / mb-0.5 observados en suscripción
   4: 4,
   8: 8,
   12: 12,
   16: 16,
   20: 20,
+  24: 24, // mb-6 observado en suscripción · w-6 de la pastilla de dots
   28: 28,
   32: 32,
   40: 40,

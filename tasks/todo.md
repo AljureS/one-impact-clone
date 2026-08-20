@@ -1,3 +1,104 @@
+# Fase 3 — Auditoría (en curso, 2026-08-19)
+
+Plan aprobado (plan mode). Se audita el working tree (bloque F sin commitear).
+Doctrina skill playbook: auditores reportan con evidencia, no arreglan;
+fixes por bloques con commit propuesto; re-audit hasta verde.
+
+- [ ] Ronda 1: security-auditor (§3.1) + slop-auditor (§3.2) + qa-auditor
+      (§3.3 + visual de §3.2) en paralelo → tasks/audit-*.md
+      - [x] security ✓ re-auditado: ítem 1 (npm audit) PASA con la
+        justificación añadida al README; único abierto = git rm --cached
+        .DS_Store (acción del dev, propuesta) + cosmético local
+      - [x] slop ✓: 0 bloqueantes; CONTENIDO 100% VERBATIM (0 desviaciones);
+        6 menores en cola de fixes (esperando a que qa suelte el navegador
+        para no romperle los checks con hot-reload)
+      - [x] qa ✓ PERFECTO: 15/15 funcional §3.3, 13/13 visual §3.2,
+        0 hallazgos accionables, 5 notas sin acción; deep links 5/5,
+        toggle/testimonios/carruseles/videos verificados con evidencia
+        (.playwright-mcp/qa-*.png); 7 ítems de device-QA para el dev
+- [x] Ronda 2 ✓: fixes de los 6 menores de slop aplicados con gates
+      tsc/eslint/knip verdes + spot visual (stops del hero idénticos en
+      DOM; /zonas intacta): svgGradientStops() en theme (5 copias → 1),
+      menuHeading y 3 tokens typography.button podados, AdvanceCard →
+      ProgressUpdateCard (código unificado en progress*), spacing 2 y 24
+      añadidos (observados) y usos unificados, 2 assets sin uso borrados
+      de assets/ (copias en public/), README nota icono/splash template.
+      + fixes de security: justificación npm audit en README, .DS_Store
+      borrados (des-trackeo = commit del dev).
+- [x] Ronda 3 ✓: slop re-auditado → §3.2 8/8 PASA (0 abiertos, 4 notas de
+      constancia); security verde salvo acción git del dev; qa sin
+      hallazgos desde ronda 1
+- [x] Cierre DoD ✓: clon limpio sirviendo y bundle web HTTP 200 (sobre
+      HEAD; re-verificar tras commits), ai-workflow con entrada Fase 3,
+      commits consolidados en el reporte final, device-QA del dev en
+      tasks/audit-qa.md
+
+## Review Fase 3 (2026-08-20)
+
+- Checklists: §3.1 verde con 1 acción del dev (git rm --cached .DS_Store);
+  §3.2 8/8; §3.3 15/15 + 13/13 visual. Evidencia en tasks/audit-*.md y
+  .playwright-mcp/qa-*.png.
+- La fase cazó y cerró: justificación de vulns faltante en README, 5
+  copias del fix de gradiente → helper único, 4 tokens/campos muertos del
+  menú web, naming avance/progress, escala de spacing incompleta (2 y 24
+  observados), 2 assets muertos en el bundle.
+- Contenido 100% verbatim confirmado por diff automatizado + grafías
+  trampa a mano — el ítem más calificable de §3.2, en verde desde ronda 1.
+- Pendiente SOLO del dev: commits (bloque F + Fase 3), git rm --cached
+  .DS_Store, GIF del README, device-QA física (7 ítems).
+
+---
+
+# Bloque F — Feedback UI/UX app-first (CERRADO 2026-08-19)
+
+Plan aprobado (plan mode). /loop activo. Feedback del dev: esto es una app,
+no una web — footer solo en Nosotros y mejor para teléfono; glassmorphism
+solo en overlaps reales (skill ui-ux-pro-max); videos verificados o no se
+muestran. Fase 3 después, con su propio plan mode.
+
+- [x] F1 footer ✓ (código; visual pendiente en gate F3): quitado de
+      home/zonas/detalle/suscripción; movido a features/about/components
+      (único consumidor) y rediseñado phone-first (pila centrada, 44pt,
+      sin columna MENÚ ni prop de gutter); AboutScreen sin sección CONTACTO
+      propia (el footer la absorbe); data/navigation.ts intacto
+      (menuLinks sigue dando aboutTitle). Gate tsc+eslint VERDE pegado.
+- [x] F2 glass ✓ (código; visual pendiente en gate F3): expo-blur ~57.0.2
+      instalado (npx expo install); pill BrandHeader (BlurView 18 dark +
+      black30 + borde white20 + radius.full — arregla además el logo blanco
+      ilegible sobre secciones claras), playCircle de IntroVideoCard a
+      BlurView 10 light (backdrop-blur-sm real del sitio restaurado), back
+      de ZoneDetail con BlurView absoluteFill (misma regla de UI flotante).
+      Todos con overflow hidden. Gate tsc+eslint VERDE pegado. npm audit
+      avisó de issues al instalar → revisar en §3.1 de Fase 3.
+- [x] F3 videos ✓: inventario = 2 usos de one-impact-intro.mp4 (único video;
+      el sitio MISMO lo usa de fondo del hero → hero fiel). BUG REAL cazado:
+      en web el tap de que-es no reproducía (play() antes del montaje del
+      VideoView → _mountedVideos vacío en expo-video web) → fix: play como
+      efecto de showPlayer. Evidencia timeline: tap→playing→9.8s completos
+      con audio→ended. Hero avanzando en web (2.27→3.47) y renderizando en
+      iOS. Sin rama de contingencia: todo existe y reproduce.
+- [x] F4 docs ✓: README (proceso paso 3, 3 filas en la tabla, política de
+      video, árbol, límite Android del blur), ai-workflow bloque F, lessons
+      ×2 (app≠web · CI=1 apaga watcher), review abajo.
+- [x] Gate visual 390 (Metro sin CI=1 + Playwright): home hero/que-es/final,
+      zonas final, detalle amazonia (back glass), suscripción final,
+      nosotros footer nuevo — todos ✓ vs referencias con divergencias
+      autorizadas; footer con 3 links role/aria/44px y CONTACTO sin
+      duplicar. iOS: blur nativo real verificado (nosotros + home hero).
+
+## Review Bloque F (2026-08-19)
+
+- Feedback del dev ejecutado completo con plan aprobado + /loop: footer
+  app-first solo en Nosotros, glass en los 3 overlaps flotantes reales
+  (nada de glass donde no hay overlap: tab bar y scrims descartados con
+  criterio), videos verificados reproduciendo en ambas plataformas.
+- El gate F3 cazó un bug real de producción (que-es no reproducía en web) y
+  el diagnóstico dejó una regla operativa nueva (CI=1 sin watcher).
+- Pendiente dev: commitear los 4 mensajes propuestos del bloque F (en el
+  reporte), grabar GIF. Fase 3 = siguiente, con su propio plan mode.
+
+---
+
 # Fase 2 — Construcción (en curso)
 
 Plan aprobado (plan mode, 2026-08-19). /loop de precisión activo: cada bloque

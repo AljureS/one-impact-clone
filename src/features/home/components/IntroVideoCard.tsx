@@ -3,11 +3,13 @@
 // en la app: el tap reproduce de verdad one-impact-intro.mp4 en el mismo
 // espacio 16:9, con controles nativos. Player propio, separado del hero.
 // Estructura observada: wrapper aspect-video rounded-2xl bg-gray-900, overlay
-// black/30, círculo 64px white/20 con borde white/40 y triángulo blanco.
+// black/30, círculo 64px white/20 con borde white/40 + backdrop-blur-sm
+// (glass real del sitio, restaurado con BlurView en el bloque F).
+import { BlurView } from 'expo-blur';
 import { Image } from 'expo-image';
 import { router, useFocusEffect } from 'expo-router';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Svg, { Polygon } from 'react-native-svg';
 
@@ -38,10 +40,16 @@ export function IntroVideoCard() {
     }, [player]),
   );
 
-  const handlePlay = () => {
-    setShowPlayer(true);
-    player.play();
-  };
+  // play() recién cuando el VideoView montó: llamado en el mismo tick del
+  // swap, en web el comando se pierde (el <video> aún no existe; en native
+  // el player es independiente de la vista). Detectado en el gate F3.
+  useEffect(() => {
+    if (showPlayer) {
+      player.play();
+    }
+  }, [showPlayer, player]);
+
+  const handlePlay = () => setShowPlayer(true);
 
   return (
     <View style={styles.section}>
@@ -79,7 +87,7 @@ export function IntroVideoCard() {
                   pressed && styles.mediaOverlayPressed,
                 ]}
               />
-              <View style={styles.playCircle}>
+              <BlurView intensity={10} tint="light" style={styles.playCircle}>
                 <Svg
                   width={spacing[20]}
                   height={spacing[20]}
@@ -88,7 +96,7 @@ export function IntroVideoCard() {
                 >
                   <Polygon points="8,5 19,12 8,19" fill={colors.white} />
                 </Svg>
-              </View>
+              </BlurView>
             </>
           )}
         </Pressable>
@@ -137,6 +145,7 @@ const styles = StyleSheet.create({
     borderColor: overlays.white40,
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden', // clipea el blur al círculo
   },
   playIcon: { marginLeft: spacing[4] }, // centrado óptico del triángulo
 });

@@ -16,16 +16,11 @@ import {
   gutter,
   overlays,
   spacing,
+  svgGradientStops,
   typography,
 } from '@/shared/theme';
 
-// Mismo fix cross-platform que ZoneCard: react-native-svg NATIVO ignora el
-// alfa del stopColor (extractGradient.js) → color sólido + stopOpacity.
-// Los tres stops del hero son rgba negros; el alfa sale del propio token.
-const GRADIENT_STOPS = gradients.heroHome.map((rgba, index, all) => ({
-  offset: index / (all.length - 1),
-  opacity: Number(rgba.slice(rgba.lastIndexOf(',') + 1, -1)),
-}));
+const GRADIENT_STOPS = svgGradientStops(gradients.heroHome);
 
 export function HeroSection() {
   const { height } = useWindowDimensions();

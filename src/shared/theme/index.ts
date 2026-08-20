@@ -3,7 +3,7 @@
 // capturó los nombres de clase (shadow-sm, shadow-md), no los valores; cuando
 // se observen, el token único se añade aquí. No inventar sombras por componente.
 
-export { colors, gradients, overlays } from './colors';
+export { colors, gradients, overlays, svgGradientStops } from './colors';
 export { gutter, spacing } from './spacing';
 export { radius } from './radius';
 export { typography } from './typography';

@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   },
   // Pastilla 24×8 del único lenguaje de dots del sitio (05 §3); colores
   // adaptados al fondo lima: accent/white-30 serían ilegibles aquí.
-  dotActive: { width: 24, backgroundColor: colors.gray900 },
+  dotActive: { width: spacing[24], backgroundColor: colors.gray900 },
   // CTA observado (home-styles.json): #1E1E1E, borde 1px blanco, px-7 py-3;
   // press = su hover real: invierte a pastilla blanca con texto gray-900.
   // Pressable propio: el `style` del shared Button pisa su estado pressed.

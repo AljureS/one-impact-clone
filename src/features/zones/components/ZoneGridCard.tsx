@@ -15,19 +15,11 @@ import {
   overlays,
   radius,
   spacing,
+  svgGradientStops,
   typography,
 } from '@/shared/theme';
 
-// react-native-svg NATIVO descarta el alfa del stopColor y solo honra
-// stopOpacity → color base sólido + stopOpacity con el alfa del token
-// (mismo fix cross-platform documentado en el feature home).
-const GRADIENT_STOPS = gradients.zoneCardZones.map((rgba, index, all) => ({
-  offset: index / (all.length - 1),
-  opacity:
-    rgba === overlays.transparent
-      ? 0
-      : Number(rgba.slice(rgba.lastIndexOf(',') + 1, -1)),
-}));
+const GRADIENT_STOPS = svgGradientStops(gradients.zoneCardZones);
 
 const CARD_HEIGHT = 208; // h-52 observado a 390
 

@@ -11,24 +11,13 @@ import { zoneCardChipLabel } from '@/data/zones';
 import {
   colors,
   gradients,
-  overlays,
   radius,
   spacing,
+  svgGradientStops,
   typography,
 } from '@/shared/theme';
 
-// react-native-svg NATIVO descarta el alfa del stopColor y solo honra
-// stopOpacity (extractGradient.js: `color & 0x00ffffff | alpha << 24`, alfa
-// default 1); en web sí respeta rgba. Cross-platform: color base sólido +
-// stopOpacity con el alfa del token. Stops del theme (arriba → abajo),
-// el más oscuro (black80) queda en offset 1 = fondo, como en el sitio.
-const GRADIENT_STOPS = gradients.zoneCardHome.map((rgba, index, all) => ({
-  offset: index / (all.length - 1),
-  opacity:
-    rgba === overlays.transparent
-      ? 0
-      : Number(rgba.slice(rgba.lastIndexOf(',') + 1, -1)),
-}));
+const GRADIENT_STOPS = svgGradientStops(gradients.zoneCardHome);
 
 interface ZoneCardProps {
   zone: Zone;

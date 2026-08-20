@@ -86,9 +86,6 @@ export const typography = {
       fontSize: 16,
       lineHeight: 24,
     },
-    navLink: { fontFamily: fontFamily.medium, fontSize: 14 },
-    mobileMenuLink: { fontFamily: fontFamily.regular, fontSize: 16 },
-    mobileMenuCta: { fontFamily: fontFamily.bold, fontSize: 16 },
   },
   // §3.5
   caption: {

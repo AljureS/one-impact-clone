@@ -1,8 +1,9 @@
-// Tarjeta de avance (raw/zonas-styles.json › advanceCard): imagen 192 de alto
-// rounded-2xl, h3 14/700 accent, fecha 12 white/50, párrafo 12 white/80.
-// Sin interacción en el sitio (no es link, sin hover). `width` la fija el
-// carrusel de /zonas (slide 220); sin width se estira (lista vertical de la
-// ficha de zona).
+// Tarjeta de avance («Avances desde el territorio»; raw/zonas-styles.json ›
+// advanceCard): imagen 192 de alto rounded-2xl, h3 14/700 accent, fecha 12
+// white/50, párrafo 12 white/80. Sin interacción en el sitio (no es link).
+// `width` la fija el carrusel de /zonas (slide 220); sin width se estira
+// (lista vertical de la ficha de zona). Nombre alineado al modelo
+// ProgressUpdate; «advance*» queda solo en tokens/assets que espejan al sitio.
 import { Image } from 'expo-image';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -11,12 +12,12 @@ import { colors, overlays, radius, spacing, typography } from '@/shared/theme';
 
 const IMAGE_HEIGHT = 192; // h-48 observado
 
-interface AdvanceCardProps {
+interface ProgressUpdateCardProps {
   update: ProgressUpdate;
   width?: number;
 }
 
-export function AdvanceCard({ update, width }: AdvanceCardProps) {
+export function ProgressUpdateCard({ update, width }: ProgressUpdateCardProps) {
   return (
     <View style={width === undefined ? undefined : { width }}>
       <View style={styles.imageWrap}>

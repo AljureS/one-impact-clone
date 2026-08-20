@@ -3,17 +3,18 @@
 // no réplica. Regla: cada string visible sale verbatim de src/data; nada
 // redactado aquí. Patrón de páginas interiores del sitio: lienzo sandBg,
 // gutter 20 y títulos peso 700 (03 §6.1/§6.2).
-// Orden: hero → stat → aliados → contacto → CTA → footer.
+// Orden: hero → stat → aliados → CTA → footer (el contacto vive en el
+// footer app-first del bloque F; una sección propia lo duplicaría).
 import { useRouter } from 'expo-router';
-import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { footer, navCta } from '@/data/navigation';
 import { progressSection } from '@/data/progress';
 import { Button } from '@/shared/components/Button';
-import { Footer } from '@/shared/components/Footer';
 import { Screen } from '@/shared/components/Screen';
 import { colors, gutter, spacing, typography } from '@/shared/theme';
 
+import { Footer } from './components/Footer';
 import { PartnersSection } from './components/PartnersSection';
 import { StatStrip } from './components/StatStrip';
 
@@ -36,25 +37,6 @@ export function AboutScreen() {
       </View>
       <StatStrip />
       <PartnersSection />
-      <View style={styles.contact}>
-        <Text accessibilityRole="header" style={styles.contactHeading}>
-          {footer.contactHeading}
-        </Text>
-        <Pressable
-          accessibilityRole="link"
-          accessibilityLabel={footer.contactEmail.label}
-          onPress={() => Linking.openURL(footer.contactEmail.href)}
-          style={styles.contactLink}
-        >
-          {({ pressed }) => (
-            <Text
-              style={[styles.contactEmail, pressed && styles.contactPressed]}
-            >
-              {footer.contactEmail.label}
-            </Text>
-          )}
-        </Pressable>
-      </View>
       <View style={styles.ctaSection}>
         {/* CTA a /suscripcion con label existente: navCta, el CTA canónico del
             header del sitio en todas las páginas. statsCta («Quiero unirme»)
@@ -65,7 +47,7 @@ export function AboutScreen() {
           style={styles.cta}
         />
       </View>
-      <Footer paddingHorizontal={gutter.zonesAndSubscription} />
+      <Footer />
     </Screen>
   );
 }
@@ -86,19 +68,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: spacing[16],
   },
-  contact: {
-    paddingHorizontal: gutter.zonesAndSubscription,
-    paddingBottom: spacing[56], // el top lo da el pb-64 de aliados
-    alignItems: 'center',
-  },
-  contactHeading: {
-    ...typography.caption.footerHeading, // mini-heading uppercase del sitio
-    color: colors.gray500,
-    marginBottom: spacing[8],
-  },
-  contactLink: { minHeight: 44, justifyContent: 'center' }, // target táctil HIG
-  contactEmail: { ...typography.body.default, color: colors.gray900 },
-  contactPressed: { color: colors.gray600 },
   ctaSection: {
     paddingHorizontal: gutter.zonesAndSubscription,
     paddingBottom: spacing[64],

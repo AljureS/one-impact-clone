@@ -9,10 +9,6 @@ import { colors, spacing, typography } from '@/shared/theme';
 
 import { BenefitIcon } from './BenefitIcon';
 
-// mb-6 y mb-0.5 del sitio = 24 y 2; la escala congelada no trae esos pasos (reportado).
-const MB_6 = spacing[4] + spacing[20];
-const HALF_STEP = spacing[4] / 2;
-
 export function BenefitsList() {
   return (
     <View>
@@ -40,7 +36,7 @@ const styles = StyleSheet.create({
   title: {
     ...typography.title.benefits, // lh 390 no capturado: default de RN (reportado en theme)
     color: colors.gray900,
-    marginBottom: MB_6,
+    marginBottom: spacing[24], // mb-6
   },
   list: { gap: spacing[20] }, // gap-5
   item: {
@@ -52,7 +48,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     ...typography.body.benefitTitle,
     color: colors.gray900,
-    marginBottom: HALF_STEP, // mb-0.5
+    marginBottom: spacing[2], // mb-0.5
   },
   itemDescription: {
     ...typography.body.benefitDescription,

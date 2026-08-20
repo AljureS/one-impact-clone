@@ -6,7 +6,10 @@
 // @/data/progress, y el CTA existente «Quiero hacer parte» → /suscripcion.
 // Es app, no web: sin Screen/BrandHeader (el logo flotante ocuparía el mismo
 // top-left) y con botón back flotante además del swipe/back nativo del stack.
+// ~205 líneas a propósito (§3.2): pantalla derivada auto-contenida — partirla
+// crearía componentes de un solo uso, que el mismo §3.2 prohíbe.
 import { Ionicons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
 import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -25,7 +28,6 @@ import { queEsSection } from '@/data/home';
 import { progressSection, progressUpdates } from '@/data/progress';
 import { zones } from '@/data/zones';
 import { Button } from '@/shared/components/Button';
-import { Footer } from '@/shared/components/Footer';
 import { SectionTitle } from '@/shared/components/SectionTitle';
 import {
   colors,
@@ -34,19 +36,13 @@ import {
   overlays,
   radius,
   spacing,
+  svgGradientStops,
   typography,
 } from '@/shared/theme';
 
-import { AdvanceCard } from './components/AdvanceCard';
+import { ProgressUpdateCard } from './components/ProgressUpdateCard';
 
-// Mismo fix cross-platform que ZoneGridCard: stopColor sólido + stopOpacity.
-const GRADIENT_STOPS = gradients.zoneCardZones.map((rgba, index, all) => ({
-  offset: index / (all.length - 1),
-  opacity:
-    rgba === overlays.transparent
-      ? 0
-      : Number(rgba.slice(rgba.lastIndexOf(',') + 1, -1)),
-}));
+const GRADIENT_STOPS = svgGradientStops(gradients.zoneCardZones);
 
 // Decisiones de la pantalla derivada (no hay medidas de sitio que respetar).
 const HERO_HEIGHT_RATIO = 0.6;
@@ -72,6 +68,13 @@ export function ZoneDetailScreen() {
         pressed && styles.backPressed,
       ]}
     >
+      {/* Glass (bloque F): misma regla que la pastilla del BrandHeader. */}
+      <BlurView
+        pointerEvents="none"
+        intensity={18}
+        tint="dark"
+        style={StyleSheet.absoluteFill}
+      />
       <Ionicons name="chevron-back" size={24} color={colors.white} />
     </Pressable>
   );
@@ -145,7 +148,7 @@ export function ZoneDetailScreen() {
               color={colors.white}
             />
             {updates.map((update) => (
-              <AdvanceCard key={update.id} update={update} />
+              <ProgressUpdateCard key={update.id} update={update} />
             ))}
           </View>
         )}
@@ -155,7 +158,6 @@ export function ZoneDetailScreen() {
             onPress={() => router.push(queEsSection.cta.href)}
           />
         </View>
-        <Footer paddingHorizontal={gutter.zonesAndSubscription} />
       </ScrollView>
       {backButton}
     </View>
@@ -174,6 +176,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 10,
+    overflow: 'hidden', // clipea el blur al círculo
   },
   backPressed: { backgroundColor: overlays.black45 },
   hero: { overflow: 'hidden' },

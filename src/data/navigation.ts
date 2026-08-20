@@ -24,7 +24,6 @@ export const tabLabels = {
 export const footer = {
   tagline:
     'Infraestructura abierta para monitorear impacto colectivo verificado',
-  menuHeading: 'MENÚ',
   menuLinks: [
     { label: 'Inicio', href: '/' },
     { label: 'Zonas de Impacto', href: '/zonas' },

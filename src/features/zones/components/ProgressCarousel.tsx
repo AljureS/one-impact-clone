@@ -29,14 +29,14 @@ import {
   typography,
 } from '@/shared/theme';
 
-import { AdvanceCard } from './AdvanceCard';
+import { ProgressUpdateCard } from './ProgressUpdateCard';
 
 const SLIDE_WIDTH = 220; // w-[220px] observado
 const SLIDE_GAP = spacing[16];
 // Dots observados: inactivo 8×8 white/30, activo pastilla 24×8 accent
 // (w-2/w-6 h-2). El target táctil llega a 44pt con alto fijo + hitSlop.
 const DOT_SIZE = 8;
-const DOT_ACTIVE_WIDTH = 24;
+const DOT_ACTIVE_WIDTH = spacing[24];
 const DOT_TARGET_HEIGHT = 44;
 const DOT_HIT_SLOP = (DOT_TARGET_HEIGHT - DOT_SIZE) / 2;
 
@@ -82,7 +82,7 @@ export function ProgressCarousel() {
 
   const renderItem = useCallback(
     ({ item }: { item: ProgressUpdate }) => (
-      <AdvanceCard update={item} width={SLIDE_WIDTH} />
+      <ProgressUpdateCard update={item} width={SLIDE_WIDTH} />
     ),
     [],
   );

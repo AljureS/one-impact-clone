@@ -1,7 +1,8 @@
 // /suscripcion (02-content-suscripcion, raw/suscripcion-mobile-notes): la
 // pantalla más "nativa" del sitio — todo vive en una columna max-w-md (448)
 // centrada, sin reflow web→móvil. Orden real: collage-hero full-bleed →
-// planes (toggle + selector + CTA único) → beneficios → footer. Fondo crema
+// planes (toggle + selector + CTA único) → beneficios; sin footer (bloque
+// F: solo /nosotros lo lleva). Fondo crema
 // continuo en las dos sections, gutter 20 (03 §6.1). El collage va bajo la
 // status bar (hero full-bleed → safeTop=false, StatusBar light sobre fotos,
 // como el nav blanco flotante del sitio).
@@ -18,7 +19,6 @@ import {
 } from '@/data/plans';
 import type { BillingCycle, PlanId } from '@/data/types';
 import { Button } from '@/shared/components/Button';
-import { Footer } from '@/shared/components/Footer';
 import { Screen } from '@/shared/components/Screen';
 import {
   colors,
@@ -36,8 +36,6 @@ import { PlanCard } from './components/PlanCard';
 
 // max-w-md del sitio: ancho máximo de TODO el contenido de /suscripcion.
 const CONTENT_MAX_WIDTH = 448;
-// mb-6 del sitio = 24; la escala congelada no trae paso 24 (reportado).
-const MB_6 = spacing[4] + spacing[20];
 
 export function SubscriptionScreen() {
   const [billing, setBilling] = useState<BillingCycle>(defaultBilling);
@@ -89,7 +87,6 @@ export function SubscriptionScreen() {
           <BenefitsList />
         </View>
       </View>
-      <Footer paddingHorizontal={gutter.zonesAndSubscription} />
     </Screen>
   );
 }
@@ -117,7 +114,7 @@ const styles = StyleSheet.create({
     color: colors.gray500,
     marginBottom: spacing[32], // mb-8
   },
-  toggleWrap: { marginBottom: MB_6 }, // mb-6
+  toggleWrap: { marginBottom: spacing[24] }, // mb-6
   planRow: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -28,7 +28,10 @@ vista rápida en navegador.
 2. **Fase 2 — Construcción**: fundaciones (scaffold → theme → data →
    navegación) y luego un feature por carpeta, cada sección verificada contra
    su screenshot 390 antes de darse por lista.
-3. El uso de agentes de IA (qué se pidió, qué se aceptó, qué se corrigió) está
+3. **Iteración de diseño** (post-review del dev, "esto es una app, no una
+   web"): footer solo en Nosotros, glassmorphism en la UI flotante y política
+   de video verificado — cada cambio re-verificado en web e iOS.
+4. El uso de agentes de IA (qué se pidió, qué se aceptó, qué se corrigió) está
    documentado en [`docs/ai-workflow.md`](docs/ai-workflow.md); el plan
    maestro en [`docs/PLAYBOOK.md`](docs/PLAYBOOK.md).
 
@@ -45,13 +48,19 @@ Las que definen la app; cada una validada contra lo observado a 390px:
 | Carrusel de avances con snap CSS + dots | FlatList con `snapToOffsets` replicando los offsets medidos del sitio | Fidelidad al comportamiento real, con el primitivo nativo correcto |
 | Toggle Mensual/Anual sin ARIA | Segmented control con `accessibilityState={{selected}}` y anuncio para lector de pantalla | Los 3 precios reaccionan al instante como en el sitio; la a11y es regla dura en móvil |
 | Testimonios con `aria-pressed` | Avatares con estado local y `accessibilityState selected`; el "play" sigue decorativo (el sitio no tiene audio real) | Replicar, no inventar features |
-| Footer multi-columna | MENÚ y CONTACTO **lado a lado** al final del scroll | Es como el propio sitio colapsa a 390 (observado, no asumido) |
+| Footer multi-columna en todas las páginas | **Solo Nosotros** cierra con un bloque de marca/contacto phone-first (pila centrada, targets 44pt, sin columna MENÚ) | En una app el footer web es ruido: la navegación ya vive en las tabs (y el link muerto `/proyectos` desaparece); decisión de diseño del review |
+| Logo blanco flotante que se pierde sobre fondos claros (rasgo real del sitio) | Pastilla **glassmorphism** tras el logo (expo-blur: blur + scrim `black30` + borde `white20`); mismo tratamiento en el back flotante del detalle de zona | La UI flotante se superpone a contenido arbitrario al scrollear; el glass la mantiene legible sobre cualquier fondo sin taparlo |
+| Play de que-es con `backdrop-blur-sm` (glass real del sitio) | `BlurView` en el círculo de play | Fidelidad recuperada: la primera versión lo aproximaba con opacidad plana |
 | `/nosotros` y `/zonas/[slug]` (**403 en el origin**, nunca públicas) | Pantallas **derivadas** de lo capturado: detalle = imagen + descripción + avances del territorio + CTA; nosotros = misión + stat + aliados + contacto | Interpretación documentada, no réplica: cero texto redactado — cada string proviene de `src/data/` |
 | CTA «Comenzar mi travesía» → `/registro?plan=&billing=` | El CTA no navega (feedback táctil solamente) | `/registro` quedó fuera del alcance definido; el deep link está documentado en la exploración |
 
 Reglas transversales: touch targets ≥44pt (con `hitSlop` donde el visual es
 menor), contraste AA sobre fotografía vía overlays, `FlatList` para
 colecciones, safe areas respetadas, font scale del sistema sin apagar.
+Política de video verificado: todo lo cinematográfico se probó
+**reproduciendo** en web e iOS (hero autoplay muted avanzando; que-es
+completa sus 9.8s con audio al tap) — nada se muestra sobre un asset que no
+exista o no reproduzca.
 
 ## Arquitectura
 
@@ -64,7 +73,7 @@ app/                  # Expo Router: tabs (Home·Zonas·Suscripción·Nosotros) 
 src/
   features/           # home · zones · subscription · about (pantallas + componentes propios)
   shared/
-    components/       # Button · SectionTitle · Screen · Footer · BrandHeader
+    components/       # Button · SectionTitle · Screen · BrandHeader (el footer vive en about)
     theme/            # tokens desde la exploración (colors · typography · spacing · radius)
   data/               # modelos tipados + contenido verbatim del sitio (única fuente de textos)
 assets/               # imágenes/video/SVGs entregados (de public/)
@@ -85,10 +94,18 @@ vez de "normalizarse"; grafías reales del sitio intactas («Amazonia» en home,
   computados → la app no las inventa; se anotó como deuda de exploración.
 - El copy «escuchar sus testimonios» del sitio no tiene audio real detrás
   (verificado): la app tampoco lo finge.
+- Icono y splash siguen siendo los del template de Expo: el sitio no entrega
+  branding de app y no se inventó (regla de contenido); queda como decisión
+  de marca pendiente.
+- Vulnerabilidades conocidas (`npm audit`, auditoría §3.1): 8 high
+  (`image-size`, vía expo→metro) y 8 moderate (`uuid`, vía
+  config-plugins→xcode). Todas **transitivas del tooling de build** — no se
+  embarcan en el bundle de la app — y sin fix upstream no-breaking
+  (`npm audit fix --force` degradaría a expo@53). Aceptadas y monitoreadas.
 
 ## Con más tiempo
 
-- QA en dispositivos físicos chico/grande y ajuste fino de font scale.
+- QA en dispositivos físicos chico/grande (Ej: Ipad) y ajuste fino de font scale.
 - Animar la transición de los dots y el swap de testimonios (Reanimated).
 - Deep links con scheme propio (`one-impact://zonas/amazonia`).
 - Tests de los reducers visuales (toggle de precios, selección de zona).

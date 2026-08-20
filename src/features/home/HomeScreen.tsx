@@ -1,7 +1,6 @@
 // Home: secciones en el orden real del sitio (02-content-home). Hero
 // full-bleed: sin safe area top y StatusBar clara sobre el video oscuro.
-// El footer del sitio va al final del scroll (patrón web→native).
-import { Footer } from '@/shared/components/Footer';
+// Sin footer (bloque F: solo /nosotros lo lleva; las tabs ya navegan).
 import { Screen } from '@/shared/components/Screen';
 
 import { HeroSection } from './components/HeroSection';
@@ -20,7 +19,6 @@ export function HomeScreen() {
       <TestimonialsSection />
       <PartnersRow />
       <StatsBanner />
-      <Footer />
     </Screen>
   );
 }

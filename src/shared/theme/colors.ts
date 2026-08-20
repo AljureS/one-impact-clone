@@ -68,3 +68,18 @@ export const gradients = {
     overlays.black45,
   ],
 } as const;
+
+// Stops SVG cross-platform para `gradients`: react-native-svg NATIVO descarta
+// el alfa del stopColor y solo honra stopOpacity (extractGradient.js:
+// `color & 0x00ffffff | alpha << 24`); en web sí respeta rgba. Fix: color
+// base sólido (negro) + stopOpacity con el alfa del propio token rgba
+// (transparent → 0). Offsets equiespaciados: from/via/to del sitio.
+export function svgGradientStops(stops: readonly string[]) {
+  return stops.map((rgba, index, all) => ({
+    offset: index / (all.length - 1),
+    opacity:
+      rgba === overlays.transparent
+        ? 0
+        : Number(rgba.slice(rgba.lastIndexOf(',') + 1, -1)),
+  }));
+}

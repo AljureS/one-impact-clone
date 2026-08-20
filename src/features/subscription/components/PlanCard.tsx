@@ -15,8 +15,6 @@ import { colors, overlays, radius, spacing, typography } from '@/shared/theme';
 // Intrínsecos del dibujo del check (viewBox 0 0 12 12, stroke 2), no tokens.
 const CHECK_VIEWBOX = '0 0 12 12';
 const CHECK_STROKE = 2;
-// gap-0.5 y mt-0.5 del sitio = 2; la escala congelada no trae paso 2 (reportado).
-const HALF_STEP = spacing[4] / 2;
 
 interface PlanCardProps {
   plan: Plan;
@@ -96,7 +94,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'baseline',
     justifyContent: 'center',
-    columnGap: HALF_STEP, // gap-0.5
+    columnGap: spacing[2], // gap-0.5
   },
   price: { ...typography.caption.planPriceInactive, color: colors.gray600 },
   priceSelected: {
@@ -107,7 +105,7 @@ const styles = StyleSheet.create({
   annualNote: {
     ...typography.caption.planBilledAnnually,
     color: colors.gray400,
-    marginTop: HALF_STEP, // mt-0.5
+    marginTop: spacing[2], // mt-0.5
     textAlign: 'center',
   },
   check: {

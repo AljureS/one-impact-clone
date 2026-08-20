@@ -1,13 +1,12 @@
 // /zonas (02-content-zonas.md, raw/zonas-mobile-notes): hero crema con patrón
 // topográfico → PILA VERTICAL de 3 tarjetas (a 390 el sitio apila, sin
 // carrusel; contraste deliberado con home) → carrusel de avances con snap y
-// dots → footer. Gutter 20 y títulos peso 700, propios de esta pantalla
-// (03 §6.1/§6.2 — no unificar con home).
+// dots. Sin footer (bloque F). Gutter 20 y títulos peso 700, propios de esta
+// pantalla (03 §6.1/§6.2 — no unificar con home).
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { zonesGridZones, zonesHero } from '@/data/zones';
-import { Footer } from '@/shared/components/Footer';
 import { Screen } from '@/shared/components/Screen';
 import { colors, gutter, spacing, typography } from '@/shared/theme';
 
@@ -39,7 +38,6 @@ export function ZonesScreen() {
         ))}
       </View>
       <ProgressCarousel />
-      <Footer paddingHorizontal={gutter.zonesAndSubscription} />
     </Screen>
   );
 }
