@@ -6,21 +6,9 @@ import type { SiteLink } from './types';
 
 export const logoAlt = 'One Impact';
 
-export const navLinks: SiteLink[] = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Zonas One Impact', href: '/zonas' },
-  { label: 'Cómo aportar', href: '/suscripcion' },
-  { label: 'Quiénes somos', href: '/nosotros' },
-];
-
 export const navCta = {
   label: 'Únete a One Impact',
   href: '/suscripcion',
-} as const;
-
-export const menuLabels = {
-  open: 'Abrir menú',
-  close: 'Cerrar menú',
 } as const;
 
 // Labels de bottom tabs: adaptación móvil (el sitio no tiene tabs), derivados

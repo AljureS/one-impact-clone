@@ -6,4 +6,4 @@
 export { colors, gradients, overlays } from './colors';
 export { gutter, spacing } from './spacing';
 export { radius } from './radius';
-export { fontFamily, typography } from './typography';
+export { typography } from './typography';

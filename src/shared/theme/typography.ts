@@ -5,7 +5,7 @@
 // documentado. Un lineHeight no capturado se omite (no se inventa) — queda el
 // default de RN y está reportado como faltante.
 
-export const fontFamily = {
+const fontFamily = {
   regular: 'Geist_400Regular',
   medium: 'Geist_500Medium',
   semiBold: 'Geist_600SemiBold',

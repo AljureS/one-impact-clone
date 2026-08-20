@@ -99,3 +99,43 @@ propuesta de lo que debería ir ahí, documentadas en README como
 interpretación y no réplica — y que `/registro` quede fuera de alcance (solo
 el link documentado). Con eso autorizó cerrar la fase y ejecutar el
 checkpoint.
+
+---
+
+## Fase 2 — Construcción (2026-08-19)
+
+**Qué se pidió:** plan de Fase 2 (plan mode, aprobado por el dev con 11
+decisiones de adaptación explícitas) y ejecución con /loop de precisión:
+cada bloque verificado con verify-block antes de continuar.
+
+**Qué hizo el agente:**
+- `foundation-builder` (1 agente continuado): B1 scaffold SDK 57 →
+  B2 theme (6 conflictos del sitio respetados por pantalla; sombras SIN
+  token porque la exploración no capturó valores) → B3 data (verbatim con
+  script de cruce; paró y preguntó antes de crear `home.ts` fuera de la
+  estructura §2.1 — autorizado) → B4 navegación+shared.
+- `feature-builder` ×4 (uno por carpeta): home por secciones (6 commits),
+  zones (índice fiel + detalle derivado), subscription (toggle verificado
+  en vivo con los 8 cambios exactos), about (derivada con tabla
+  fuente-por-elemento).
+- Orquestador: gate visual por sección (expo web 390 + Playwright,
+  comparación lado a lado contra 06-screenshots), interacciones probadas en
+  vivo (swap de testimonios, toggle 5/10/15↔4/8/12), BrandHeader compartido,
+  fix del Footer a 2 columnas (fidelidad al colapso real), limpieza knip.
+
+**Qué se rechazó/corrigió en el loop (el agente lo detectó, no pasó):**
+1. `experimental_backgroundImage` para el gradiente del hero → no rinde en
+   react-native-web; se exigió reescritura a react-native-svg.
+2. Bug latente de react-native-svg NATIVO: descarta el alfa de `stopColor`
+   → `stopOpacity` explícito en los 3 overlays (hallado por el builder al
+   investigar la causa raíz).
+3. Svg overlays sin width/height → caían al default 300×150 en web;
+   corregido en hero, ZoneCard y TestimonialCard.
+4. CTA de stats alineado a la izquierda (el sitio lo centra) → centrado.
+5. Footer apilado → el sitio a 390 mantiene MENÚ|CONTACTO lado a lado;
+   corregido en shared por el orquestador.
+6. Exports muertos (navLinks, menuLabels, fontFamily, ZoneSlug) → podados
+   tras knip en el cierre de fase.
+
+**Aceptado / ajustado por el dev:** (pendiente de revisión; commits
+propuestos por bloque en tasks/todo.md y el reporte final)

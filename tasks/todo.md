@@ -22,16 +22,92 @@ Decisiones de adaptación 1–11 en el plan (van al README).
       del builder + spot-check del orquestador ✓. Gates ✓. Pendiente
       autorizado: home.ts (hero/que-es) se añade al abrir B4 · commit
       propuesto: feat(data): typed content models and site content
-- [ ] B4 navigation+shared (ídem): tabs+stack, stubs, Button/SectionTitle/
-      Screen/Footer — congela theme/ y data/
+- [x] B4 navigation+shared: árbol §2.1 exacto (rutas de 3 líneas), tabs
+      Ionicons outline→filled (home/map/heart/people), Geist 5 pesos con
+      splash, shared Button/SectionTitle/Screen/Footer con tokens+a11y,
+      «Proyectos» disabled (403 en el sitio). Verificado en navegador real a
+      390 por el builder + gates re-verificados ✓. theme/ y data/ CONGELADOS
+      · commits propuestos: feat(data)… y feat(navigation): bottom tabs +
+      nested zones stack
 - [ ] B5 home (feature-builder): hero → que-es → zonas → testimonios →
       aliados → stats-cta (sección=commit)
-- [ ] B6 zones (feature-builder): ZonesScreen → ZoneDetailScreen derivada ×5
-- [ ] B7 subscription (feature-builder): collage-hero → planes+toggle → beneficios
-- [ ] B8 about (feature-builder): pantalla derivada
-- [ ] B9 README (orquestador) — GIF lo graba el dev
-- [ ] Cierre: gates de fase (tsc/eslint/expo-doctor/knip/wc) + review aquí +
-      ai-workflow.md
+      - [x] hero ✓: layout/copy verbatim a 390; overlay corregido a
+        react-native-svg (experimental_backgroundImage no rendía en web —
+        verificado en DOM: 3 stops exactos del theme); expo-env.d.ts
+        añadido a ignores de eslint (generado, lo tocaba mi server QA) ·
+        commit propuesto: feat(home): hero section with background video
+      - [x] que-es ✓: gate visual lado a lado casi idéntico; playback real
+        (mejora deliberada documentada), contain por mp4 vertical, sin
+        auto-resume (audio) · commit propuesto: feat(home): intro video
+        section with real playback
+      - [x] zonas ✓: carrusel snap+dots (divergencia deliberada §2.4
+        documentada), gate visual ✓; fix real de paso: react-native-svg
+        NATIVO descarta el alfa de stopColor → stopOpacity explícito en
+        ZoneCard y HeroSection (bug latente en native, verificado en
+        fuente de la lib) · commit propuesto: feat(home): zones carousel
+        with snap and dots
+      - [x] testimonios ✓: swap verificado en vivo (Carlos→quote correcta),
+        accessibilityState selected en código (RN-web no lo mapea en
+        role=button; en nativo sí aplica), gate visual ✓; Metro con watcher
+        muerto detectado y reiniciado durante el gate · commit propuesto:
+        feat(home): testimonials with selectable profiles
+      - [x] aliados ✓ (idéntico: círculos grises estáticos, hover sin
+        equivalente táctil documentado) · commit: feat(home): partners row
+      - [x] stats-cta ✓ (overlay plano forest80, 35K estático; fix CTA
+        centrado verificado offset 0px) · commit: feat(home): stats banner
+        with cta
+      - [x] footer montado; fix del orquestador en shared/Footer: MENÚ y
+        CONTACTO lado a lado a 390 como el sitio (verificado same-row) —
+        entra al commit de stats-cta o como fix(shared) aparte, a criterio
+        del dev
+      HOME COMPLETO: 7 secciones con gate visual aprobado.
+- [x] Bloque shared (orquestador): BrandHeader (logo blanco flotante, no
+      navega — tabs ya navegan) montado en Screen para todas las pantallas;
+      verificado a 390 idéntico al sitio. De paso cazado y corregido (por el
+      builder) el sizing default 300×150 de los 3 Svg-overlay en web ·
+      commit propuesto: feat(shared): floating brand header on all screens
+- [x] B6 zones ✓: índice fiel (pila vertical, patrón topográfico transcrito
+      a componente, avances snap con offsets medidos del sitio) + detalle
+      derivado verificado en deep links (amazonia: desc + 2 avances + CTA;
+      patagonia: omisiones correctas, sin texto filtrado). Único string
+      no-de-data: a11y «Volver» (invisible, reportado) · commits:
+      feat(zones): zones index with vertical grid and progress carousel ·
+      feat(zones): derived zone detail screen
+- [x] B7 subscription ✓: collage clamp fiel, toggle verificado en vivo
+      (5/10/15↔4/8/12 instantáneo + annualNote ×3 + selected a11y añadido),
+      6 SVG de beneficios transcritos verbatim (sin sustituir), CTA no-op
+      documentado (/registro fuera de alcance). Faltantes honestos: sombras
+      sin token, pasos 2/24 de spacing sugeridos · commits:
+      feat(subscription): hero collage · feat(subscription): plans with
+      billing toggle · feat(subscription): benefits list
+- [x] B8 about ✓: derivada austera con tabla fuente-por-elemento (todo de
+      data existente: título de menuLinks, párrafo de progressSection, stat,
+      aliados, contacto, CTA navCta), smoke-render verificado a 390 · commit:
+      feat(about): derived about screen from captured content
+- [x] B9 README ✓: reescrito con setup, tabla de decisiones de adaptación
+      con porqué, arquitectura, límites honestos y "con más tiempo";
+      placeholder de GIF (<10MB, lo graba el dev) · commit: docs: README
+      with adaptation decisions
+- [x] Cierre: tsc/eslint/expo-doctor 21/21 ✓ · knip limpio tras podar 4
+      exports muertos (expo-updates = falso positivo del plugin, sin key
+      updates en app.json) · tamaños: máx 199 líneas, nada >200 ·
+      ai-workflow.md con entrada consolidada de Fase 2
+
+## Review Fase 2 (2026-08-19)
+
+- 9/9 bloques ejecutados con el /loop de precisión: 17 commits propuestos
+  (4 fundaciones + 6 home + 1 shared + 2 zones + 3 subscription + 1 about)
+  + README + chore de knip. Todo gate pegado, no afirmado.
+- El loop CAZÓ 6 defectos reales antes de que llegaran al dev (ver
+  ai-workflow.md): 3 de SVG (web default 300×150, alfa en native,
+  experimental_backgroundImage), CTA descentrado, footer mal colapsado,
+  código muerto. La comparación visual lado a lado y las interacciones en
+  vivo (toggle, testimonios, deep links ×5) fueron los detectores.
+- Infra del entorno: el watcher de Metro muere tras sleep del equipo →
+  regla operativa "reiniciar Metro antes de cada gate visual".
+- Pendiente para el dev: commitear en orden, grabar el GIF del README,
+  y Fase 3 (auditorías §3.1–3.3) como siguiente sesión — el QA de device
+  físico (§3.3) es del dev.
 
 ---
 

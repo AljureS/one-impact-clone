@@ -3,8 +3,7 @@
 // (verbatim) · slugs: 01-sitemap.md · assets: 04-assets-map.md.
 import type { ImageRequireSource } from 'react-native';
 
-export type ZoneSlug =
-  'amazonia' | 'mexico' | 'africa' | 'borneo' | 'patagonia';
+type ZoneSlug = 'amazonia' | 'mexico' | 'africa' | 'borneo' | 'patagonia';
 
 export interface Zone {
   slug: ZoneSlug;
