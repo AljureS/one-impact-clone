@@ -12,6 +12,16 @@ import { gutter, overlays, radius, spacing } from '@/shared/theme';
 
 import Logo from '../../../assets/images/logo_blanco.svg';
 
+const LOGO_HEIGHT = 38;
+// Alto real de la pastilla (Yoga suma padding y borde al contenido). Lo usa el
+// back de zonas/[slug] para ser su gemelo visual.
+export const PILL_HEIGHT = LOGO_HEIGHT + 2 * spacing[8] + 2;
+// Franja que el chrome flotante ocupa bajo el safe area: Screen la reserva como
+// paddingTop inicial para que ningún título arranque debajo de la pastilla
+// (pro-rules §scroll/fixed coexistence); al scrollear el contenido sí pasa
+// por debajo y ahí trabaja el glass.
+export const HEADER_CLEARANCE = spacing[12] + PILL_HEIGHT;
+
 export function BrandHeader() {
   const insets = useSafeAreaInsets();
   return (
@@ -20,7 +30,7 @@ export function BrandHeader() {
       style={[styles.root, { top: insets.top + spacing[12] }]}
     >
       <BlurView intensity={18} tint="dark" style={styles.pill}>
-        <Logo width={96} height={38} accessibilityLabel={logoAlt} />
+        <Logo width={96} height={LOGO_HEIGHT} accessibilityLabel={logoAlt} />
       </BlurView>
     </View>
   );

@@ -34,3 +34,32 @@
   (CLAUDE.md §8) y nada más. No crear archivos ni estructuras que gestionen,
   ordenen o recuerden commits al dev. El git es 100% suyo: mensajes
   propuestos, cero logística.
+
+## 2026-08-20 — El chrome flotante reserva su espacio inicial
+
+- **Qué hice:** en Bloque F floté el logo glass sobre todas las pantallas
+  pero `Screen` nunca reservó su franja: en Zonas y Nosotros (sin hero
+  full-bleed) el primer título arrancaba debajo de la pastilla. El dev lo
+  cazó con capturas.
+- **Qué salió mal:** verifiqué el glass sobre contenido *scrolleado* pero
+  no el estado de reposo de cada pantalla que monta el chrome; el sitio
+  real sí reserva la franja de su header (h-16 + py-14 ≈ 120px).
+- **Regla:** todo elemento fijo/flotante (header, back, barras) reserva su
+  franja como inset inicial del contenido (pro-rules §"scroll and fixed
+  element coexistence"): el glass es para el scroll-under, no para tapar el
+  reposo. Al introducir chrome flotante, verificar el reposo de CADA
+  pantalla que lo monta, no solo una.
+
+## 2026-08-20 — «Este botón» no se adivina; el nativo no se juzga sin recargar
+
+- **Qué hice:** el feedback decía «este botón no está bien integrado» en las
+  fichas de zona; asumí que era el back (único botón del top) y era el CTA
+  «Quiero hacer parte» del final. Además mostré un screenshot del simulador
+  con bundle viejo: Expo Go no recarga solo tras cambios de JS si la app
+  quedó abierta/deep-linkeada, y el dev vio «el problema sigue en mobile».
+- **Regla:** ante un referente ambiguo con captura, enumerar TODOS los
+  botones de la pantalla nombrada y ubicar el señalado en la captura antes
+  de elegir (o preguntar si sigue ambiguo). Y antes de mostrar o juzgar
+  estado nativo: `simctl terminate` + reabrir el deep link y confirmar en la
+  captura un marcador del cambio nuevo — mismo principio que la frescura de
+  bundle web del 2026-08-19.

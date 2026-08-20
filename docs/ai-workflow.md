@@ -218,3 +218,64 @@ arreglar, fixes por bloques del orquestador, re-audit hasta verde.
 device-QA de §3.3 (7 ítems listados en tasks/audit-qa.md); grabar el GIF.
 
 **Aceptado / ajustado por el dev:** (pendiente de revisión)
+
+## Bloque G — Feedback UI/UX: overlap del logo y back sin integrar (2026-08-20)
+
+**Qué se pidió:** con capturas del simulador — (1) el pill glass del logo se
+encima con los títulos («Sobre Nosotros»); (2) en las fichas de zona
+(amazonia, patagonia…) el back flotante no se ve integrado; usar las skills
+de diseño.
+
+**Qué hizo el agente:**
+- Diagnóstico de causa raíz: en Bloque F se flotó el header pero `Screen`
+  nunca reservó su franja — el sitio real sí la reserva (header h-16 +
+  py-14 ⇒ título a ~120px). Afecta solo a Zonas y Nosotros (`safeTop`);
+  Home y Suscripción tienen hero full-bleed y el pill flota sobre foto.
+- Respaldo de diseño: `ui-ux-pro-max/references/pro-rules.md` §"Scroll and
+  fixed element coexistence" (insets iniciales para que el contenido no
+  quede oculto tras chrome fijo). La búsqueda en la DB del skill no tiene
+  regla específica de "floating header clearance" (fallback declarado).
+- Fix (3 archivos): `BrandHeader` exporta `PILL_HEIGHT` (56) y
+  `HEADER_CLEARANCE` (68); `Screen` aplica el clearance como `paddingTop`
+  del contenido solo con `safeTop`; el back de `ZoneDetailScreen` pasa a
+  gemelo del pill (56×56, borde `white20`, chevron 28) — la receta glass
+  completa que le faltaba.
+- Verificación: gates tsc/eslint; web 390 numérica en DOM (pill bottom 68 <
+  título 124 en Zonas y Nosotros, overlap=false; back [20,12,56×56] con
+  borde 1px en amazonia y patagonia; scroll-under glass conservado; Home y
+  Suscripción intactas con hero en y=0) + iOS nativo con blur real
+  (`.playwright-mcp/blG-*.png`).
+- Nota aclarada al dev: el engrane azul de las capturas es el botón
+  dev-menu de **Expo Go**, no es parte de la app (desaparece en build real).
+
+**Aceptado / ajustado por el dev:** el overlap del logo sí era el problema;
+el «botón» resultó ser otro (ver Bloque H) — el back mejorado se queda.
+
+## Bloque H — CTA flotante «Únete» en la ficha de zona (2026-08-20)
+
+**Qué se pidió:** corrección del dev al Bloque G: «no me entendiste» — el
+botón mal integrado era el **CTA «Quiero hacer parte»** al final de
+`/zonas/[slug]` (pegado a la izquierda, suelto). Pide que el CTA sea un
+**objeto flotante** siempre cerca del usuario y una frase más simple:
+**«Únete»**.
+
+**Qué hizo el agente:**
+- Causa del des-centrado: `alignSelf: 'flex-start'` base del `Button` le
+  gana al `alignItems: 'center'` del contenedor (mismo caso que AboutScreen
+  ya pisaba con `alignSelf: 'center'`).
+- Fix (1 archivo, `ZoneDetailScreen`): sección CTA in-flow → CTA flotante
+  `absolute` bottom-centrado sobre el contenido (`pointerEvents box-none`),
+  con clearance inferior de 76 en el scroll (la lección del clearance del
+  mismo día, ahora en el borde de abajo). Identidad lima del CTA del sitio
+  conservada: es CTA, no chrome — glass lo des-jerarquizaría.
+- **Copy dictado por el dev** («Únete»), documentado en el código; deriva
+  del «Únete a más de…» real del sitio y el destino sigue siendo el
+  capturado (`queEsSection.cta.href` → `/suscripcion`). No es contenido
+  inventado por el agente.
+- Verificación: gates tsc/eslint; web 390 — centrado exacto (centerX=195),
+  fijo durante el scroll (top 735 constante), última tarjeta con 72px de
+  aire a scroll máximo, tap real → `/suscripcion`, patagonia ✓; iOS nativo
+  tras **forzar relanzamiento de Expo Go** (el simulador mostraba un bundle
+  viejo — el «sigue mal en mobile» del dev era el cache, no el fix).
+
+**Aceptado / ajustado por el dev:** (pendiente de revisión)

@@ -3,10 +3,10 @@
 // capturado: hero = el patrón visual de la tarjeta de zona a pantalla completa
 // (imagen + gradiente zoneCardZones + título con la grafía donde la zona
 // existe), avances filtrados por el mapeo zoneSlug documentado en
-// @/data/progress, y el CTA existente «Quiero hacer parte» → /suscripcion.
+// @/data/progress, y CTA flotante «Únete» (copy del dev) → /suscripcion.
 // Es app, no web: sin Screen/BrandHeader (el logo flotante ocuparía el mismo
 // top-left) y con botón back flotante además del swipe/back nativo del stack.
-// ~205 líneas a propósito (§3.2): pantalla derivada auto-contenida — partirla
+// ~220 líneas a propósito (§3.2): pantalla derivada auto-contenida — partirla
 // crearía componentes de un solo uso, que el mismo §3.2 prohíbe.
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
@@ -27,6 +27,7 @@ import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { queEsSection } from '@/data/home';
 import { progressSection, progressUpdates } from '@/data/progress';
 import { zones } from '@/data/zones';
+import { PILL_HEIGHT } from '@/shared/components/BrandHeader';
 import { Button } from '@/shared/components/Button';
 import { SectionTitle } from '@/shared/components/SectionTitle';
 import {
@@ -49,6 +50,13 @@ const HERO_HEIGHT_RATIO = 0.6;
 // Solo lectura por screen reader; el back no existe en el sitio (affordance
 // nativa añadida) y @/data no trae ningún label de retorno.
 const BACK_LABEL = 'Volver';
+// Copy dictado por el dev (bloque H): el CTA flotante pide frase corta;
+// deriva del «Únete a más de…» real del sitio (banda de stats). El destino
+// sigue siendo el capturado: queEsSection.cta.href → /suscripcion.
+const CTA_LABEL = 'Únete';
+// Franja que el CTA flotante ocupa abajo (offset + minHeight 44 del Button +
+// aire): el scroll la reserva para que la última tarjeta no quede tapada.
+const CTA_CLEARANCE = spacing[16] + 44 + spacing[16];
 
 export function ZoneDetailScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
@@ -75,7 +83,7 @@ export function ZoneDetailScreen() {
         tint="dark"
         style={StyleSheet.absoluteFill}
       />
-      <Ionicons name="chevron-back" size={24} color={colors.white} />
+      <Ionicons name="chevron-back" size={28} color={colors.white} />
     </Pressable>
   );
 
@@ -95,7 +103,7 @@ export function ZoneDetailScreen() {
   return (
     <View style={styles.root}>
       <StatusBar style="light" />
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
         <View
           style={[styles.hero, { height: windowHeight * HERO_HEIGHT_RATIO }]}
         >
@@ -152,13 +160,16 @@ export function ZoneDetailScreen() {
             ))}
           </View>
         )}
-        <View style={styles.cta}>
-          <Button
-            label={queEsSection.cta.label}
-            onPress={() => router.push(queEsSection.cta.href)}
-          />
-        </View>
       </ScrollView>
+      {/* CTA flotante (bloque H): siempre a la mano del pulgar; el box-none
+          deja pasar el scroll por los costados. */}
+      <View style={styles.ctaFloat} pointerEvents="box-none">
+        <Button
+          label={CTA_LABEL}
+          onPress={() => router.push(queEsSection.cta.href)}
+          style={styles.ctaCentered}
+        />
+      </View>
       {backButton}
     </View>
   );
@@ -169,10 +180,14 @@ const styles = StyleSheet.create({
   back: {
     position: 'absolute',
     left: gutter.zonesAndSubscription,
-    width: 44,
-    height: 44,
+    // Gemelo del BrandHeader: mismo alto, top, scrim, borde y blur — el chrome
+    // flotante conserva su geometría al navegar entre pantallas (target ≥44).
+    width: PILL_HEIGHT,
+    height: PILL_HEIGHT,
     borderRadius: radius.full,
     backgroundColor: overlays.black30, // contraste AA del chevron sobre foto
+    borderWidth: 1,
+    borderColor: overlays.white20,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 10,
@@ -198,5 +213,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: gutter.zonesAndSubscription,
     gap: spacing[32],
   },
-  cta: { paddingVertical: spacing[56], alignItems: 'center' },
+  scrollContent: { paddingBottom: CTA_CLEARANCE },
+  ctaFloat: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: spacing[16],
+  },
+  ctaCentered: { alignSelf: 'center' }, // pisa el flex-start base del Button
 });

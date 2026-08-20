@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { colors } from '@/shared/theme';
 
-import { BrandHeader } from './BrandHeader';
+import { BrandHeader, HEADER_CLEARANCE } from './BrandHeader';
 
 interface ScreenProps {
   children: ReactNode;
@@ -29,7 +29,15 @@ export function Screen({
       style={[styles.root, { backgroundColor }]}
     >
       <StatusBar style={statusBarStyle} />
-      <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={[
+          styles.content,
+          // Pantallas sin hero full-bleed reservan la franja del logo flotante
+          // para que el primer título no arranque debajo de la pastilla.
+          safeTop && styles.contentClearance,
+        ]}
+      >
         {children}
       </ScrollView>
       <BrandHeader />
@@ -41,4 +49,5 @@ const styles = StyleSheet.create({
   root: { flex: 1 },
   scroll: { flex: 1 },
   content: { flexGrow: 1 },
+  contentClearance: { paddingTop: HEADER_CLEARANCE },
 });

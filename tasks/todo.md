@@ -1,3 +1,56 @@
+# Bloque H — CTA flotante «Únete» en la ficha de zona (2026-08-20)
+
+Plan aprobado (plan mode). Corrección del dev sobre G: el botón del feedback
+era el CTA del final de zonas/[slug] (izquierda + suelto), no el back; pide
+CTA flotante siempre a la mano y copy corto «Únete» (dictado por el dev).
+
+- [x] ZoneDetail: sección CTA in-flow → CTA flotante absolute bottom
+      centrado (`ctaCentered` pisa el `alignSelf: flex-start` del Button,
+      la causa del des-centrado); `pointerEvents="box-none"`
+- [x] `CTA_LABEL = 'Únete'` (copy del dev; deriva del «Únete a más de…»
+      del sitio) con destino capturado intacto (`/suscripcion`)
+- [x] Clearance inferior `CTA_CLEARANCE` (76) en el scroll — lección del
+      mismo día aplicada al borde de abajo
+- [x] Gates tsc/eslint + web 390: centrado exacto (centerX 195), fijo en
+      scroll (top 735 en reposo y a tope), última tarjeta con 72px de aire,
+      tap → /suscripcion; patagonia ✓; iOS nativo con relanzamiento forzado
+      de Expo Go (el sim mostraba bundle viejo)
+
+## Review Bloque H
+
+- Quedó: CTA flotante centrado estilo app, siempre cerca del pulgar, con
+  la identidad lima del CTA del sitio (no glass: es CTA, no chrome).
+- Fuera: back del G se queda (mejora válida sin queja); resto de pantallas
+  intactas.
+- Evidencia: `.playwright-mcp/blH-*.png` (web bottom + iOS fresh).
+
+# Bloque G — Feedback UI/UX: clearance + back integrado (2026-08-20)
+
+Plan aprobado (plan mode). Capturas del dev: pill del logo encimado con
+«Sobre Nosotros» (pasa en Zonas y Nosotros); back de zonas/[slug] sin
+integrar visualmente.
+
+- [x] BrandHeader: `LOGO_HEIGHT` extraído; `PILL_HEIGHT` (56) y
+      `HEADER_CLEARANCE` (68) exportados
+- [x] Screen: `paddingTop: HEADER_CLEARANCE` solo con `safeTop` (Zonas,
+      Nosotros); Home/Suscripción full-bleed intactas
+- [x] ZoneDetail: back gemelo del pill — 56×56, borde `white20`,
+      chevron 28; hereda la rama de slug inválido
+- [x] Gates `tsc`/`eslint` + verificación numérica web 390 (pill bottom 68
+      < título 124 en ambas pantallas; back [20,12,56×56] con borde 1px en
+      amazonia y patagonia; scroll-under glass conservado; Home y
+      Suscripción sin cambios) + iOS nativo (blur y borde reales)
+
+## Review Bloque G
+
+- Quedó: overlap resuelto reservando la franja del header solo donde no hay
+  hero full-bleed; título a 124 ≈ ~120 del sitio (h-16 + py-14) — más fiel
+  que antes. El back comparte ya la geometría y receta glass completa del
+  pill (altura, top, scrim, borde, blur).
+- Fuera: Home y Suscripción (sin bug); el engrane azul de las capturas es
+  el dev-menu de Expo Go, no existe en un build real.
+- Evidencia: `.playwright-mcp/blG-*.png` (web + nativo).
+
 # Fase 3 — Auditoría (en curso, 2026-08-19)
 
 Plan aprobado (plan mode). Se audita el working tree (bloque F sin commitear).
